@@ -1,4 +1,4 @@
-# cart
+# cart      11
 
 > vue+vuex写的一个购物车。使用了vuex的modules模块化，把购物车和商品的状态
 > 分开来写，单独放入一个js文件中。我们将 store 分割成模块（module）。
