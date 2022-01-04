@@ -55,19 +55,18 @@ export default {
   },
   methods:{
     searchWeather: function (city) {
-      axios.defaults.withCredentials = true
-      // axios.defaults.baseURL = 'http://localhost:3000/'
+     
       Vue.axios
-        .get('http://localhost:3000/playlist/hot')
+        .get("http://wthrcdn.etouch.cn/weather_mini + 'this.city'")
         .then((res) => {
         console.log(res.data)
-          // this.weatherList = res.data.data.forecast;
-          // this.reminder = res.data.data.ganmao;
-          // this.ishow = true;
+          this.weatherList = res.data.data.forecast;
+          this.reminder = res.data.data.ganmao;
+          this.ishow = true;
       })
-      // .catch(function (error) {
-      //   alert("请输入正确的城市/县城")
-      // })
+      .catch(function (error) {
+        alert("请输入正确的城市/县城")
+      })
     }
   }
 
