@@ -10,6 +10,15 @@ import store from './store' // 引入vuex
 import '@/mock/mock'// 引入mock.js----mock数据
 import { Swipe, SwipeItem } from 'vant' // 引入vant-ui的轮播组件
 import 'vant/lib/index.css'
+
+// 使用axios请求后端接口，有很多种方法，具体可看src/pages/Home/home.vue中轮播图的请求方法
+import axios from 'axios' // 引入axios
+import requests from './api/mockserver' // 直接引入src/api/mockserver.js中封装好的axios
+import * as api from './api/index' // 将统一管理的接口以api对象的形式引入
+Vue.prototype.$axios = axios // 挂载到vue原型上，可以在页面中通过this.$axios调用,不用每次请求再次在组件中引入axios
+Vue.prototype.$requests = requests // 将封装好的axios挂载到原型上，可以在页面中通过this.$request调用
+Vue.prototype.$api = api //  将统一管理的接口挂载到原型上，可以在页面中通过this.$api调用
+
 Vue.use(Swipe)
 Vue.use(SwipeItem)
 

@@ -65,11 +65,23 @@ src/pages路径
 在src/store中配置
 
 六：
-（一）
-二次封装axios：https://www.jianshu.com/p/1727f133b151
-src/api/index.js这里统一管理接口
-src/api/mockserver.js这里封装mockjs请求
-src/api/server.js这里封装真实接口的请求
+（一） 二次封装axios：https://www.jianshu.com/p/1727f133b151
+
+有很多种方法，有很多种方法，具体可看src/pages/Home/home.vue中轮播图的请求方法
+
+1：在src/api/mockserver.js中进行二次封装mock的接口
+2：在src/api/server.js中进行二次封装真实的接口（真实接口失效了，暂时弃用）
+3：将接口文件request.js通过 import {requests} from './api/mockserver.js' 引入到main.js中
+并且通过 Vue.prototype.$requests = requests 挂载到vue原型上，可以在页面中通过this.$requests调用
+
+接口封装改进：新建src/api/index.js，在里面统一管理接口并且挂载到原型上（推荐使用）
+
+1:在api文件夹内新建index.js统一管理接口
+先通过 import {reqGetBannerList} from '../../api/index.js' 在src/pages/Home/home.vue引入统一管理的接口，然后使用
+2:将统一管理的接口通过 import * as api from './api/index' 以api对象的形式引入到main.js
+然后通过Vue.prototype.$api = api // 挂载到vue原型上，可以在页面中通过this.$api调用
+
+
 
 （二）
 进行跨域配置：配置proxyTable
@@ -93,6 +105,7 @@ src/pages/My/childen文件夹中登录注册组件
 （二）
 由于真实接口失效了，所以用mockjs模拟验证码（别忘了在入口文件main.js中引入mock）
 https://www.cnblogs.com/guozongzhang/p/10722691.html
+使用 npm install mockjs安装mock
 mock文件夹就相当于后端，里面定义一些后端接口和数据模板
 
 （三）
