@@ -13,35 +13,49 @@ https://www.cnblogs.com/pythoncd/articles/12210091.html
 
 # 前端工程化包括： #
 
-技术选型：
+1技术选型：
 vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axiox+echarts+mock
-vue中使用sass：https://www.jianshu.com/p/df1dca488c10
+- vue中使用sass：https://www.jianshu.com/p/df1dca488c10
+- vue中使用mock(别忘了在入口文件main.js中引入):
+- https://www.cnblogs.com/tzm-001/p/10382534.html
+- https://www.cnblogs.com/guozongzhang/p/10722691.html
 
-开发规范：
-目录结构,文件命名规范
-编码规范：eslint(js代码校验)，stylelint（css校验）,prettier（主要用于格式化html部分的代码）,
+2开发规范：
+- 目录结构,文件命名规范
+- 编码规范：eslint(js代码校验)，stylelint（css校验）,prettier（主要用于格式化html部分的代码）,
 husky（可以配置git的一些钩子，本文主要用来配置 commit 钩子）,editorconfig (统一编辑器基本配置),
 tsconfig(typescript规范)
 
-开发流程的规范：
-使用敏捷，增强开发进度管理和控制
-应对各项风险，需求变更等
-code review 机制
-UAT（用户验收测试） 提升发布的需求的质量
+3开发流程的规范：
+- 使用敏捷，增强开发进度管理和控制
+- 应对各项风险，需求变更等
+- code review 机制
+- UAT（用户验收测试） 提升发布的需求的质量
 
-前后端接口规范，其他文档规范
+4前后端接口规范，其他文档规范
 
-打包规范：
-分包 加速 CDN
+5打包规范：
+- webpack打包优化，拆包，分包，加速 ，CDN
+- 关闭生产环境sourceMap;
+- 关闭预加载(vue会预加载后面的页面，会导致首屏加载比较慢)
+- g-zip压缩(需要nginx配置);
+- 生产环境CDN加载部分插件
+- 去除生产环境console和debugger;
+- 公共代码抽离
+- 打包大小分析
+- 打包缓存
+- 部分依赖使用异步cdn加载
 
-单元测试：
-提高代码的可测试性，引入单元测试，提高代码质量
+6单元测试：
+- https://juejin.cn/post/6844904051449036808
+- https://juejin.cn/post/6844904196244766728
+- 使用jest进行单元测试，提高代码的可测试性，引入单元测试，提高代码质量
 
-通过使用各种自动化的工程工具，提升整个开发、部署效率:
-比如gulp
+7通过使用各种自动化的工程工具，提升整个开发、部署效率:
+- 比如gulp
 
-性能优化：
-css到js,webpack打包，线上，测试工具，性能监控工具，性能的指标。
+8性能优化：
+- css到js，线上，测试工具，性能监控工具，性能的指标。
 
 
 
