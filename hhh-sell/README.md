@@ -1,29 +1,101 @@
-
+关于vue的webapp的项目骨架
 -----开发文档
+
+# vue项目搭建流程 #
+https://blog.csdn.net/weixin_40760196/article/details/79952652
+# vue-cli2和vue-cli3区别： #
+https://segmentfault.com/a/1190000021582356?utm_source=tag-newest
+# vue-cli3中webpack配置： #
+https://blog.csdn.net/u014440483/article/details/87267160
+# vue-cli3运行cli2项目： #
+https://www.cnblogs.com/pythoncd/articles/12210091.html
+
+
+# 前端工程化包括： #
+
+技术选型：
+vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axiox+echarts+mock
+vue中使用sass：https://www.jianshu.com/p/df1dca488c10
+
+开发规范：
+目录结构,文件命名规范
+编码规范：eslint(js代码校验)，stylelint（css校验）,prettier（主要用于格式化html部分的代码）,
+husky（可以配置git的一些钩子，本文主要用来配置 commit 钩子）,editorconfig (统一编辑器基本配置),
+tsconfig(typescript规范)
+
+开发流程的规范：
+使用敏捷，增强开发进度管理和控制
+应对各项风险，需求变更等
+code review 机制
+UAT（用户验收测试） 提升发布的需求的质量
+
+前后端接口规范，其他文档规范
+
+打包规范：
+分包 加速 CDN
+
+单元测试：
+提高代码的可测试性，引入单元测试，提高代码质量
+
+通过使用各种自动化的工程工具，提升整个开发、部署效率:
+比如gulp
+
+性能优化：
+css到js,webpack打包，线上，测试工具，性能监控工具，性能的指标。
+
+
 
 一： 技术栈：
 vue+vuex（modules）+vue-cli+axios+vue-router+vant-ui+rem布局
 模块：轮播，购物车，微信支付，登陆注册
 
-二：vue-cli脚手架使用:
-node_modules:放置项目依赖的地方
-public:一般放置一些共用的静态资源，打包上线的时候，public文件夹里面资源原封不动打包到dist文件夹里面
-src：程序员源代码文件夹
-assets文件夹：经常放置一些静态资源（图片），assets文件夹里面资源webpack会进行打包为一个模块（js文件夹里面）
-components文件夹:一般放置非路由组件（或者项目共用的组件）
-pages/views文件夹：一般放置路由组件
-comment:放置公用的东西
-api:放置封装的请求接口
-mock:放置模拟的数据mockjs
-plugins:放置一些js插件
-router:配置的路由
-store:vuex的相关配置
-store/modules：vuex模块化
-App.vue 唯一的根组件
-main.js 入口文件【程序最先执行的文件】
-babel.config.js:babel配置文件
-package.json：看到项目描述、项目依赖、项目运行指令
-README.md:项目说明文件
+二：文件目录说明
+- build----用于存放 webpack 相关配置和脚本。
+开发中仅偶尔使用 到此文件夹下 webpack.base.conf.js 
+用于配置 less、sass等css预编译库，或者配置一下 UI 库。
+    - build----生产环境构建脚本
+    - check-versions
+    - utils---- 构建相关工具方法
+    - vue-loader.conf
+    - webpack.base.conf----wabpack基础配置
+    - webpack.dev.conf----wabpack开发环境配置
+    - webpack.prod.conf----
+- config----主要存放配置文件，用于区分开发环境、线上环境的不同。 
+常用到此文件夹下 config.js 配置开发环境的 端口号、是否开启热加载
+或者设置生产环境的静态资源相对路径、是否开启gzip压缩、
+npm run build 命令打包生成静态资源的名称和路径等。
+    - dev.env----开发环境变量
+    - index---- 项目配置文件
+    - prod.env---- 生产环境变量
+- dist----默认 npm run build 命令打包生成的静态资源文件，用于生产部署
+- node_modules----存放npm命令下载的开发环境和生产环境的依赖包
+- src----项目核心文件（我们写代码都放在这个文件夹下）
+    - api----放置封装的请求接口
+    - assets----经常放置一些静态资源（样式类文件，如css，less,sass,以及一些js文件，会被webpack打包）
+    - common----公共资源存放的地方
+    - components----一般放置非路由组件或者项目公用的组件
+    - layouts----页面的布局
+    - mixins----混入（也就是一些公用的方法）
+    - mock----模拟的后端数据
+    - pages/views----一般放置路由组件和页面组件
+    - plugins----放置一些js插件
+    - router----配置的路由
+    - store----vuex的相关配置
+    - utils----存放vue开发过程中一些公共的.js方法。
+    - App.vue----唯一的根组件
+    - main.js----入口文件（程序最先执行的文件）
+- static----静态资源（一般放图片资源，不会被webpack打包）
+- test----测试文件目录（unit&e2e）
+- babel----babel编译参数
+- .editorconfig----代码格式
+- .eslintignore----js代码校验规范
+- .eslintrc--------js代码校验规范
+- .gitignore----git上传需要忽略的文件配置
+- .postcssrc----转换css的工具
+- index----设置项目主页的的一些meta头信息和提供用于挂载vue节点。
+- package.json----看到项目描述、项目依赖、项目运行指令
+- package-lock----
+- README.md----项目说明文件
 
 三：脚手架的配置
 （一）
