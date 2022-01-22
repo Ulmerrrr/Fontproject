@@ -1,47 +1,33 @@
 <template>
   <div class="goods">
-    <div class="goods-list">
-      <p>商品信息</p>
-      <table border="2">
-        <tr v-for="item in goodslist" :key="item.id">
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.price}}</td>
-<!--          购买商品，并且把购买的商品传递过去-->
-          <button @click="select(item)">购买</button>
-        </tr>
-      </table>
-    </div>
+    <!--  父组件监听子组件传过来的事件，触发goodsdetail方法，然后执行相应的操作。-->
+    <good @select="goodsdetail"></good>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-// 引入获取商品列表的接口
-import {reqGetGoods} from '../../api'
+import good from './children/good'
 export default {
   name: 'product',
-  components: {},
+  components: {
+    good
+  },
   data () {
     return {
       goodslist: []
     }
   },
   methods: {
-    // 写一个获取商品列表的方法
-    getgoods: function () {
-      reqGetGoods().then((res) => {
-        if (res.code === 200) {
-          console.log(res.data)
-          this.goodslist = res.data
-        }
+    // 监听子组件的事件跳转到商品详情页
+    goodsdetail: function (item) {
+      this.$router.push({
+        path: `/product/${item.id}`
+        // 这里点击item地址栏对应的变成product/item.id...
+        // 例如点击鱼香肉丝（他的id是11），那么通过this.$router.push跳转到singer/11，
+        // 此时动态路由aa=11，跳转到component对应组件goods，并且渲染到product组件上（因为router-view写在了product上）
+        // ｛此时在goods组件打印this.$route.params.aa的结果为11，相当于通过params传了一个参数｝
       })
-    },
-    // 购买商品，接收传过来的商品信息
-    select: function (item) {
-      // 打印一下看看是否真的传过来了
-      console.log(item)
-      // 提交mutation，并且把选择的商品传递过去，存到vuex中,
-      this.$store.commit('goods', item)
     }
   },
   mounted () {
@@ -75,7 +61,8 @@ td {
   font-size: 0.5rem;
 }
 button {
-  padding: 0.5rem;
+  padding: 0.5rem 0.2rem;
   background-color: #55a532;
+  display: inline-block;
 }
 </style>

@@ -7,6 +7,7 @@ import My from '../pages/My/my'
 import Login from '../pages/My/children/login'
 import Register from '../pages/My/children/register'
 import Trade from '../pages/trade/trade'
+import Goodsdetail from '../pages/Product/children/goodsdetail'
 
 Vue.use(Router)
 
@@ -20,7 +21,11 @@ const routes = [
     component: Home},
   {
     path: '/product',
-    component: Product
+    component: Product,
+    children: [{
+      path: ':aa', // 点击item跳转到商品详情页使用动态匹配路由
+      component: Goodsdetail
+    }]
   },
   {
     path: '/cart',

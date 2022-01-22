@@ -15,7 +15,7 @@
 # 前端工程化包括： #
 
 1技术选型：
-vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axiox+echarts+mock
+vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axios+echarts+mock
 - vue中使用sass：https://www.jianshu.com/p/df1dca488c10
 - vue中使用mock(别忘了在入口文件main.js中引入):
 - https://www.cnblogs.com/tzm-001/p/10382534.html

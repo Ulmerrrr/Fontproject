@@ -14,7 +14,7 @@ https://www.cnblogs.com/pythoncd/articles/12210091.html
 # 前端工程化包括： #
 
 1技术选型：
-vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axiox+echarts+mock
+vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axios+echarts+mock
 - vue中使用sass：https://www.jianshu.com/p/df1dca488c10
 - vue中使用mock(别忘了在入口文件main.js中引入):
 - https://www.cnblogs.com/tzm-001/p/10382534.html
@@ -65,7 +65,7 @@ vue+vuex（modules）+vue-cli+axios+vue-router+vant-ui+rem布局
 
 二：文件目录说明
 - build----用于存放 webpack 相关配置和脚本。
-开发中仅偶尔使用 到此文件夹下 webpack.base.conf.js 
+开发中仅偶尔使用 到此文件夹下 webpack.base.conf.js
 用于配置 less、sass等css预编译库，或者配置一下 UI 库。
     - build----生产环境构建脚本
     - check-versions
@@ -74,7 +74,7 @@ vue+vuex（modules）+vue-cli+axios+vue-router+vant-ui+rem布局
     - webpack.base.conf----wabpack基础配置
     - webpack.dev.conf----wabpack开发环境配置
     - webpack.prod.conf----
-- config----主要存放配置文件，用于区分开发环境、线上环境的不同。 
+- config----主要存放配置文件，用于区分开发环境、线上环境的不同。
 常用到此文件夹下 config.js 配置开发环境的 端口号、是否开启热加载
 或者设置生产环境的静态资源相对路径、是否开启gzip压缩、
 npm run build 命令打包生成静态资源的名称和路径等。
@@ -228,6 +228,9 @@ localstorage的值可以在浏览器 f12-应用-本地存储空间 中查看
 
 九
 购物车商品列表开发
+
+十
+跳转到商品详情页开发
 
 
 
