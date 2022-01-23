@@ -128,6 +128,7 @@ npm run build 命令打包生成静态资源的名称和路径等。
     - index---- 项目配置文件
     - prod.env---- 生产环境变量
 - dist----默认 npm run build 命令打包生成的静态资源文件，用于生产部署
+- mock----模拟的后端数据
 - node_modules----存放npm命令下载的开发环境和生产环境的依赖包
 - src----项目核心文件（我们写代码都放在这个文件夹下）
     - api----放置封装的请求接口
@@ -136,7 +137,6 @@ npm run build 命令打包生成静态资源的名称和路径等。
     - components----一般放置非路由组件或者项目公用的组件
     - layouts----页面的布局
     - mixins----混入（也就是一些公用的方法）
-    - mock----模拟的后端数据
     - pages/views----一般放置路由组件和页面组件
     - plugins----放置一些js插件
     - router----配置的路由
@@ -191,6 +191,18 @@ module.exports = {
     }
     },
 }
+
+# 三： #
+- 配置路由----src/router/index.js
+- vuex的配置---src/store
+- axios的二次封装----src/utils/request.js
+    - 请求进度条noprogress：https://www.cnblogs.com/CGWTQ/p/12357047.html
+    - 不同的环境（开发，测试，生产）配置baseUrl
+    - 1：Vue-cli2: https://blog.csdn.net/qq_41348029/article/details/84133983
+    - 2：Vue-cli3和vue-cli4: http://t.zoukankan.com/ddqyc-p-15428194.html
+- 统一管理接口----src/api/index.js
+- mock进行数据模拟----mock
+
 
 
 # 三：layout中进行页面布局 #
