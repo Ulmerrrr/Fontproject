@@ -16,7 +16,8 @@
 
 1技术选型：
 vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axios+echarts+mock
-- vue中使用sass：https://www.jianshu.com/p/df1dca488c10
+- vue中使用sass----https://blog.csdn.net/zhouzuoluo/article/details/81010331
+- node与node-sass版本兼容问题----https://www.jianshu.com/p/e28d300a36ed
 - vue中使用mock(别忘了在入口文件main.js中引入):
 - https://www.cnblogs.com/tzm-001/p/10382534.html
 - https://www.cnblogs.com/guozongzhang/p/10722691.html
@@ -194,14 +195,24 @@ module.exports = {
 
 # 三： #
 - 配置路由----src/router/index.js
+
 - vuex的配置---src/store
+
 - axios的二次封装----src/utils/request.js
     - 请求进度条noprogress：https://www.cnblogs.com/CGWTQ/p/12357047.html
     - 不同的环境（开发，测试，生产）配置baseUrl
     - 1：Vue-cli2: https://blog.csdn.net/qq_41348029/article/details/84133983
     - 2：Vue-cli3和vue-cli4: http://t.zoukankan.com/ddqyc-p-15428194.html
+   
 - 统一管理接口----src/api/index.js
+
 - mock进行数据模拟----mock
+
+- 清除标签边距，样式等等----src/common/css/base.css（别忘了在入口文件中引入）
+
+- 用sass配置变量，混合器，嵌套-----
+- vue中使用sass----https://blog.csdn.net/zhouzuoluo/article/details/81010331
+- node与node-sass版本兼容问题----https://www.jianshu.com/p/e28d300a36ed
 
 
 

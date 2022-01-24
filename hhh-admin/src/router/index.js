@@ -8,10 +8,10 @@ const routes = [
   {
     // 路由重定向
     path: '/',
-    redirect: '/Home'
+    redirect: '/helloworld'
   },
   {
-    path: '/',
+    path: '/helloworld',
     name: 'HelloWorld',
     component: HelloWorld
   }
