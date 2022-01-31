@@ -1,14 +1,14 @@
 // 这里统一管理接口
 // 引入封装的axios
-import request from '../utils/request'
+import requests from '../utils/request'
 
-export const getLogin = function () {
-  return request.get('')
+export const reqGetLogin = function () {
+  return requests.get('/login')
 }
-export const getRegister = function (id) {
-  return request({
-    url: '',
-    methods: 'get',
-    params: {id}
-  })
-}
+// export const getRegister = function (id) {
+//   return request({
+//     url: '',
+//     methods: 'get',
+//     params: {id}
+//   })
+// }

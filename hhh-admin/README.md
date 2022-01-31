@@ -23,7 +23,8 @@ vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axios+echarts+mock
 - https://www.cnblogs.com/guozongzhang/p/10722691.html
 
 2开发规范：
-- 目录结构,文件命名规范
+- 目录结构,
+- 文件命名规范----components文件夹内用驼峰命名，pages/views文件夹内小写和短横线命名，dom模板中使用组件用短横线和大写。
 - 编码规范：eslint(js代码校验)，stylelint（css校验）,prettier（主要用于格式化html部分的代码）,
 husky（可以配置git的一些钩子，本文主要用来配置 commit 钩子）,editorconfig (统一编辑器基本配置),
 tsconfig(typescript规范)
@@ -214,14 +215,20 @@ module.exports = {
 - vue中使用sass----https://blog.csdn.net/zhouzuoluo/article/details/81010331
 - node与node-sass版本兼容问题----https://www.jianshu.com/p/e28d300a36ed
 
-
-
-# 三：layout中进行页面布局 #
-
+- 编码规范prettier配置----https://www.cnblogs.com/maxiag/p/13056446.html
+- 编码规范eslint配置----https://blog.csdn.net/weixin_38606332/article/details/80864381
 
 
 
-# 四：router中进行路由配置 #
+# 三：创建login(登录)，layouts(首页整体框架)，错误页面(error) #
+# 3.1 #
+- login----src/pages/login
+    - 3.1.1----按需引入element 
+- layouts----src/layouts
+- error----src/pages/error
+# 3.2 #
+配置相应的常量路由----src/router/index.js
+
 
  
 ## 安装
