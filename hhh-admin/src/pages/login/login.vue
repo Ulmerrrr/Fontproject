@@ -81,7 +81,7 @@ export default {
       this.$store.dispatch('login')
         .then(() => {
           // 登录成功进行路由的跳转
-          this.$router.push('layouts')
+          this.$router.push('/layouts')
         })
       // 这里是在验证表单元素（用户名与密码）的是否符合规则
       // this.$refs.ruleForm.validate(valid => {

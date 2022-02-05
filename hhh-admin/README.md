@@ -225,9 +225,13 @@ module.exports = {
 - login----src/pages/login
     - 3.1.1----按需引入element 
 - layouts----src/layouts
+    - 3.1.2----创建基本模块：AppMain,NavBar,SideBar,TabsView. 
 - error----src/pages/error
 # 3.2 #
-配置相应的常量路由----src/router/index.js
+- 配置相应的常量路由----src/router/index.js
+- 配置异步路由----
+- 配置任意路由----
+
 
 
  

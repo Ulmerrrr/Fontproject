@@ -8,11 +8,16 @@ const actions = {
     // 获取结果请求结果
     let result = await reqGetLogin()
     // 打印一下结果
-    console.log(result.object.token)
-    // 将token存到本地
-    localStorage.setItem('token', result.object.token)
-    // 提交mutations,把token存到vuex
-    commit('token', result.object.token)
+    console.log(result)
+    // 判断一下状态码
+    if (result.data.code === 200) {
+      // 将token存到本地
+      localStorage.setItem('token', result.token)
+      // 提交mutations,把token存到vuex
+      commit('token', result.token)
+    } else {
+      return Promise.reject(new Error('faile'))
+    }
   }
 }
 export default actions
