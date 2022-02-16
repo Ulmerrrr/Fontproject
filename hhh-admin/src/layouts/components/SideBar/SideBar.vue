@@ -1,11 +1,19 @@
 <!--侧边栏-->
 <template>
-<div class="side-bar">侧边</div>
+<div class="side-bar">
+  <router-link to="/test1">测试1</router-link>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'SideBar'
+  name: 'SideBar',
+  methods: {
+  },
+  computed: {
+  },
+  mounted () {
+  }
 }
 </script>
 

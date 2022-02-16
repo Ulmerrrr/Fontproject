@@ -3,9 +3,15 @@
 const state = {
   // 后端返回的token
   token: '',
+  // 用户头像
+  avatar: '',
+  // 按钮权限
+  buttons: '',
+  // 角色信息
+  roles: '',
   // 后端返回的路由
-  resultAsyncRoute: [],
-  // 登录之后匹配成功的路由
-  resultAllRoute: []
+  routes: [],
+  // 计算后的路由
+  resultRoute: []
 }
 export default state

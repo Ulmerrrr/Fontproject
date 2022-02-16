@@ -7,6 +7,7 @@ import Test1 from '../pages/test/test1'
 import Test2 from '../pages/test/test2'
 import Test3 from '../pages/test/test3'
 import Home from '../pages/home/home'
+import Test11 from '../pages/test/test11'
 
 Vue.use(Router)
 
@@ -40,7 +41,12 @@ export const asyncRoutes = [
   {
     path: '/test1',
     name: 'test1',
-    component: Test1
+    component: Test1,
+    children: [{
+      path: 'test11',
+      name: 'test11',
+      component: Test11
+    }]
   },
   {
     path: '/test2',
@@ -53,6 +59,16 @@ export const asyncRoutes = [
     component: Test3
   }
 ]
+
+// 任意路由：当路径出现错误的时候重定向404
+export const anyRoutes = [
+  {
+    path: '/error404',
+    name: 'error404',
+    component: Error404
+  }
+]
+
 const router = new Router({
   // 注册常量路由
   routes: constantRoutes

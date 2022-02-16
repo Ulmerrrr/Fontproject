@@ -1,11 +1,26 @@
 <!--头部导航栏-->
 <template>
-<div class="navbar">导航</div>
+<div class="navbar">
+  导航
+</div>
 </template>
 
 <script>
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  data () {
+    return {}
+  },
+  methods: {
+    // 获取用户信息
+    getInfo: function () {
+      this.$store.dispatch('getInfo')
+    }
+  },
+  mounted () {
+    // 调用方法获取信息
+    this.getInfo()
+  }
 }
 </script>
 
