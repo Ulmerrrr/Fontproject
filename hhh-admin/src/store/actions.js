@@ -21,33 +21,34 @@ const actions = {
       return Promise.reject(new Error('faile'))
     }
   },
+  //
+  //
   // 获取用户信息
   async getInfo ({commit}) {
     // 获取结果
     let result = await reqGetInfo()
     console.log(result)
-    // 判断是谁登录
-    if (result.data.roles === 'admin') {
-      // 提交mutation，存储后端返回的信息
-      commit('userinfo', result)
-      // 解决数组中出现的这个[__ob__: Observer]不能被枚举
-      let routes = JSON.parse(JSON.stringify(result.data.routes))
-      console.log(routes)
-      // 根据后端返回的路由标记进行匹配异步路由
-      // 对异步路由asyncRoutes中的每一项进行过滤，如果在后端返回的路由routes能找到它，则返回。
-      // 数组indexof方法：如果数组中没有这个元素返回-1
-      let routerMatch = asyncRoutes.filter(item => {
-        if (routes.indexOf(item.name) !== -1) {
-          return true
-        }
-      })
-      console.log(routerMatch)
-      // 用户需要展示的所有路由
-      let allRoutes = constantRoutes.concat(routerMatch)
-      console.log(allRoutes)
-      // 给路由器添加新路由
-      router.addRoutes(allRoutes)
-    }
+    // 提交mutation，存储后端返回的信息
+    commit('userinfo', result)
+    // 拿到用户路由的标记，以便后面过滤来动态展示路由
+    // JSON.parse和JSON.stringify解决数组中出现的这个[__ob__: Observer]不能被枚举
+    let routes = JSON.parse(JSON.stringify(result.data.routes))
+    console.log(routes)
+    // 根据后端返回的路由标记进行匹配异步路由，找出用户需要展示的异步路由
+    // 对异步路由asyncRoutes中的每一项进行过滤，如果在后端返回的路由routes能找到它，则返回。
+    // 数组indexof方法：如果数组中没有这个元素返回-1
+    let routerMatch = asyncRoutes.filter(item => {
+      if (routes.indexOf(item.name) !== -1) {
+        return true
+      }
+    })
+    console.log(routerMatch)
+    // 给路由器添加新路由
+    router.addRoutes(routerMatch)
+    console.log(router)
+    // 用户需要展示的所有路由，concat不会改变原数组
+    let allRoutes = constantRoutes.concat(routerMatch)
+    console.log(allRoutes)
   }
 }
 

@@ -1,7 +1,8 @@
 <!--侧边栏-->
 <template>
 <div class="side-bar">
-  <router-link to="/test1">测试1</router-link>
+  <router-link to="/home">首页</router-link>
+  <router-link to="/product/product1">产品1</router-link>
 </div>
 </template>
 
