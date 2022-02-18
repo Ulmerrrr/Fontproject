@@ -12,7 +12,6 @@ Vue.use(Router)
 export const constantRoutes = [
   {
     path: '/login',
-    name: 'login',
     component: Login
   },
   {
@@ -30,12 +29,11 @@ export const constantRoutes = [
   },
   {
     path: '/error404',
-    name: 'error404',
     component: Error404
   }
 ]
 // 异步理由:不同的用户（角色）登陆后可以看见不同的菜单栏，异步路由和后端返回的路由进行匹配
-// 成功后添加到常量路由
+// 匹配成功后通过router.addRoutes添加到根路由router中
 export const asyncRoutes = [
   {
     path: '/product',
@@ -44,7 +42,7 @@ export const asyncRoutes = [
     // redirect: '/product/product1',
     children: [
       {
-        path: '/product/product1',
+        path: 'product/product1',
         name: 'product1',
         component: Product1
       }
@@ -55,8 +53,7 @@ export const asyncRoutes = [
 // 任意路由：当路径出现错误的时候重定向404
 export const anyRoutes = [
   {
-    path: '/error404',
-    name: 'error404',
+    path: '/Error404',
     component: Error404
   }
 ]

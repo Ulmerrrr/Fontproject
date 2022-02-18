@@ -10,6 +10,14 @@ const mutations = {
     state.buttons = userinfo.data.buttons
     state.roles = userinfo.data.roles
     state.routes = userinfo.data.routes
+  },
+  // 保存用户需要展示的异步路由
+  matchRoutes (state, matchRoutes) {
+    state.matchRoutes = matchRoutes
+  },
+  // 最终用户需要展示的所有路由
+  allRoutes (state, allRoutes) {
+    state.allRoutes = allRoutes
   }
 }
 export default mutations

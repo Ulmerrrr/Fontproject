@@ -7,14 +7,12 @@ import store from './store' // 引入vuex
 import '../mock/mock' // 引入mock.js----mock数据
 import './common/css/base.css' // 清除标签边距，样式等等
 import * as api from './api/index' // 将统一管理的接口以api对象的形式引入
-import {Form, Input, FormItem, Button} from 'element-ui' // 按需引入element
+import ElementUI from 'element-ui' // 引入整个element
+import 'element-ui/lib/theme-chalk/index.css'// 引入样式
 import './assets/iconfont/iconfont.css'// 引入阿里巴巴字体图标
 Vue.prototype.$api = api //  将统一管理的接口挂载到原型上，可以在页面中通过this.$api调用
 
-Vue.use(Form)
-Vue.use(Input)
-Vue.use(FormItem)
-Vue.use(Button)
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 

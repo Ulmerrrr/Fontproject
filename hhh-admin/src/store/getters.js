@@ -16,6 +16,14 @@ const getters = {
   },
   routes (state) {
     return state.routes
+  },
+  // 取出用户需要展示的异步路由
+  matchRoutes (state) {
+    return state.matchRoutes
+  },
+  // 取出用户需要展示的所有路由
+  allRoutes (state) {
+    return state.allRoutes
   }
 }
 export default getters

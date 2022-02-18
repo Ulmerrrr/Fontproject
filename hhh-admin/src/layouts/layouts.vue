@@ -25,10 +25,15 @@ export default {
     TabsView,
     AppMain
   },
+  created () {
+  },
   data () {
     return {}
   },
-  methods: {}
+  methods: {
+  },
+  mounted () {
+  }
 }
 </script>
 
@@ -47,6 +52,6 @@ export default {
   height: 100%;
 }
 .right {
-  width: 100%;
+  flex: 1;
 }
 </style>
