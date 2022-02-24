@@ -236,8 +236,9 @@ module.exports = {
  - 获取用户信息模块----这里进行菜单权限的处理，常用的方法有两种(菜单，路由完全由后端返回和后端只返回菜单。本项目采用的是后端只返回菜单，然后在前端对异步路由进行过滤)
  - 存在bug：
  - （1）这里我在通过addRoutes添加路由时，遇到一个bug，当切换角色时，并不能删除之前添加动态路由，导致权限低的还能访问没权限的路由：https://www.cnblogs.com/imjtzhang/p/13709166.html
- - （2）刷新后addRoutes动态添加的信息消失：
- - （3）刷新后vuex保存的用户所要展示的路由消失：https://juejin.cn/post/6844903650427404302
+ - （2）刷新后addRoutes动态添加的信息消失：https://blog.csdn.net/qq_31906983/article/details/88942965?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.add_param_isCf&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.add_param_isCf
+ - （3）刷新后vuex保存的用户所要展示的路由消失：https://juejin.cn/post/6844903650427404302        https://www.jianshu.com/p/0c8ba161b249
+- 在src/router/index.js中进行导航守卫的判断 
 
 
  

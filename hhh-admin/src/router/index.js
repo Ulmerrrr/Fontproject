@@ -5,6 +5,7 @@ import Layouts from '../layouts/layouts'
 import Error404 from '../pages/error/error404'
 import Home from '../pages/home/home'
 import Product1 from '../pages/product/product1'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -39,10 +40,10 @@ export const asyncRoutes = [
     path: '/product',
     name: 'product',
     component: Layouts,
-    // redirect: '/product/product1',
+    redirect: '/product/product1',
     children: [
       {
-        path: 'product/product1',
+        path: 'product1',
         name: 'product1',
         component: Product1
       }
@@ -53,7 +54,7 @@ export const asyncRoutes = [
 // 任意路由：当路径出现错误的时候重定向404
 export const anyRoutes = [
   {
-    path: '/Error404',
+    path: '*',
     component: Error404
   }
 ]
@@ -71,13 +72,27 @@ export function resetRouter () {
   router.matcher = newRouter.matcher
 }
 
-// 全局导航守卫：已经登陆了则浏览器中输入登录的地址不能跳转到登录页了
-// router.beforeEach((to, from, next) => {
-//   if (localStorage.getItem('data')) {
-//     next()
-//     if (to.path === '/my/login') {
-//       next('/home')
-//     }
-//   }
-// })
+// 全局导航守卫:用来判断是否登录，解决刷新后使用router.addRoutes添加的路由消失问题
+router.beforeEach((to, from, next) => {
+  // 判断是否登录，直接判断本地存储中有没有token
+  if (localStorage.getItem('token')) {
+    // 解决解决刷新后使用router.addRoutes添加的路由消失问题
+    // 判断vuex中是否有用户的路由信息，如果没有则说明用户刷新了（刷新后vuex中的数据会消失）
+    // 重新触发方法，重新添加路由，同时也重新保存的了用户需要展示的路由信息，解决刷新vuex数据消失问题
+    if (store.getters.allRoutes.length === 0) {
+      store.dispatch('getInfo').then(() => {
+        next({path: to.path})
+      })
+    } else {
+      next()
+    }
+  } else {
+    // 如果没有登录，直接去登录
+    if (to.path === '/login') {
+      next()
+    } else {
+      next('/login')
+    }
+  }
+})
 export default router

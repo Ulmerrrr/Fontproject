@@ -15,7 +15,7 @@
          <i class="el-icon-location"></i>
          <span>{{item.name}}</span>
        </template>
-       <el-menu-item index="1-3" v-for="item1 in item.children" :key="item1.id"><router-link :to="'/item1.path'">{{item1.name}}</router-link></el-menu-item>
+       <router-link :to="item.redirect"><el-menu-item index="1-3" v-for="item1 in item.children" :key="item1.id">{{item1.name}}</el-menu-item></router-link>
      </el-submenu>
    </el-menu>
  </div>
@@ -48,4 +48,8 @@ export default {
   width: 200px;
   height: 100%;
 }
+/*.router-link-active {
+  text-decoration: none;
+  list-style: none;
+}*/
 </style>
