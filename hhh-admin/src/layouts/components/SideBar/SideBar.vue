@@ -9,7 +9,12 @@
      background-color="#545c64"
      text-color="#fff"
      active-text-color="#ffd04b">
-     <el-menu-item index="1-3">首页</el-menu-item>
+     <el-submenu index="1" v-for="item in matchRoutes" :key="item.id">
+       <template slot="title">
+         <i class="el-icon-loading"></i>
+         <span>首页</span>
+       </template>
+     </el-submenu>
      <el-submenu index="1" v-for="item in matchRoutes" :key="item.id">
        <template slot="title">
          <i class="el-icon-location"></i>
@@ -47,6 +52,9 @@ export default {
   background-color: orchid;
   width: 200px;
   height: 100%;
+  .home {
+    margin: 2px auto;
+  }
 }
 /*.router-link-active {
   text-decoration: none;

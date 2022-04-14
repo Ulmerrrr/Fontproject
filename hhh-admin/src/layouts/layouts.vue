@@ -17,6 +17,7 @@ import SideBar from './components/SideBar/SideBar'
 import NavBar from './components/NavBar/NavBar'
 import TabsView from './components/TabsView/TabsView'
 import AppMain from './components/AppMain/AppMain'
+
 export default {
   name: 'layouts',
   components: {
@@ -30,8 +31,7 @@ export default {
   data () {
     return {}
   },
-  methods: {
-  },
+  methods: {},
   mounted () {
   }
 }
@@ -47,10 +47,12 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
 }
+
 .left {
   width: 200px;
   height: 100%;
 }
+
 .right {
   flex: 1;
 }
