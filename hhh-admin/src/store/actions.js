@@ -27,7 +27,7 @@ const actions = {
   async getInfo ({commit}) {
     // 获取结果
     let result = await reqGetInfo()
-    console.log(result)
+    // console.log(result)
     // 提交mutation，存储后端返回的信息
     commit('userinfo', result)
     // 拿到用户路由的标记，以便后面过滤来动态展示路由
@@ -39,6 +39,10 @@ const actions = {
     // 数组indexof方法：如果数组中没有这个元素返回-1
     let matchRoutes = asyncRoutes.filter(item => {
       if (routes.indexOf(item.name) !== -1) {
+        // 如果在if-else或者if-else-if中使用return，那么必须在将这些条件语句放在函数中，否则会报错。
+        // 同for循环中使用return一样，使用了return后，将返回到函数外边。
+        // if判断正确，会执行代码段，然后执行代码段后面的return，
+        // 此时fn执行结束，将不再执行return之后的所有语句
         return true
       }
     })

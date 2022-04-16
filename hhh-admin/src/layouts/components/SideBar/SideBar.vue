@@ -9,12 +9,12 @@
      background-color="#545c64"
      text-color="#fff"
      active-text-color="#ffd04b">
-     <el-submenu index="1" v-for="item in matchRoutes" :key="item.id">
-       <template slot="title">
-         <i class="el-icon-loading"></i>
-         <span>首页</span>
-       </template>
-     </el-submenu>
+     <router-link to="/home">
+       <el-menu-item index="1">
+         <i class="el-icon-menu"></i>
+         <span slot="title">首页</span>
+       </el-menu-item>
+     </router-link>
      <el-submenu index="1" v-for="item in matchRoutes" :key="item.id">
        <template slot="title">
          <i class="el-icon-location"></i>

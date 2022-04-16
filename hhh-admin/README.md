@@ -216,11 +216,14 @@ module.exports = {
 - 配置异步路由----
 - 配置任意路由----
 
-## 5.5:开发首页模块 ##
-- Echarts展示后端模拟的数据
-  - 原生的配置语法
-  - 优雅的封装Echarts
+## 5.5:开发首页home.vue模块 ##
+- Echarts展示数据----https://juejin.cn/post/6844903830660857869
+- 自定义echarts主题----https://blog.csdn.net/weixin_48299611/article/details/121865692 
+  - 直接使用把数据写死----src/pages/home/components/CardCharts/CartCharts.vue
+  - 调用后端接口返回的数据填充表壳
+  - 封装Echarts，实现复用
   - 封装雷达图
+## 5.6 ##
 
 
 
