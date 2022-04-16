@@ -11,9 +11,10 @@ import ElementUI from 'element-ui' // 引入整个element
 import 'element-ui/lib/theme-chalk/index.css'// 引入样式
 import './assets/iconfont/iconfont.css'// 引入阿里巴巴字体图标
 // 引入echarts
-import echarts from 'echarts'
-// 引入echart主题
+import * as echarts from 'echarts'
+// 引入echart主题（背景颜色）
 import 'echarts/theme/dark'
+import 'echarts/theme/infographic'
 // 把echarts挂载到Vue的原型上，项目中使用this.$echarts调用
 Vue.prototype.$echarts = echarts
 Vue.prototype.$api = api //  将统一管理的接口挂载到原型上，可以在页面中通过this.$api调用

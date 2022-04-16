@@ -15,6 +15,6 @@ export default {
 .app-main {
   width: 100%;
   height: calc(100vh - 80px); /*使用calc()计算宽高（vw/vh）：https://juejin.cn/post/6844903742655954957*/
-  background-color: burlywood;
+  /*background-color: burlywood;*/
 }
 </style>

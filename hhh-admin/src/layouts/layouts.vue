@@ -41,7 +41,7 @@ export default {
 .app-wrapper {
   width: 100%;
   height: 100%;
-  background-color: orange;
+  /*background-color: orange;*/
   position: absolute; /*设置绝对定位，脱离文档流，使背景铺满整个界面*/
   display: flex;
   flex-direction: row;

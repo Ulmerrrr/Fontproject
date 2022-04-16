@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .side-bar {
-  background-color: orchid;
+/*  background-color: orchid;*/
   width: 200px;
   height: 100%;
   .home {

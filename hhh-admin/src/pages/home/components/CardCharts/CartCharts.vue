@@ -8,10 +8,9 @@
 <!--        使用了card组件-->
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>卡片名称</span>
+            <span>卡片一</span>
           </div>
-          <div v-for="o in 4" :key="o" class="text item">
-            {{'列表内容 ' + o }}
+          <div id="lineCharts" class="lineCharts">
           </div>
         </el-card>
       </div>
@@ -20,22 +19,33 @@
       <div class="grid-content bg-purple">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>卡片名称</span>
-            <div id="bar" class="bar"></div>
+            <span>卡片二</span>
           </div>
-          <div>
+          <div id="barCharts" class="barCharts">
           </div>
         </el-card>
       </div>
     </el-col>
     <el-col :span="6">
       <div class="grid-content bg-purple">
-      卡片三
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>卡片三</span>
+          </div>
+          <div id="doughnutCharts" class="doughnutCharts">
+          </div>
+        </el-card>
       </div>
     </el-col>
     <el-col :span="6">
       <div class="grid-content bg-purple">
-      卡片四
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>卡片四（结合百度地图）</span>
+          </div>
+          <div id="barCharts4" class="barCharts2">
+          </div>
+        </el-card>
       </div>
     </el-col>
   </el-row>
@@ -49,12 +59,29 @@ export default {
     return {
     }
   },
-  mounted () {
-    this.drawBar()
-  },
   methods: {
+    drawLine () {
+      var myChart = this.$echarts.init(document.getElementById('lineCharts'), 'infographic')
+      var option = {
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            data: [150, 230, 224, 218, 135, 147, 260],
+            type: 'line'
+          }
+        ]
+      }
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option)
+    },
     drawBar () {
-      var myChart = this.$echarts.init(document.getElementById('bar'), 'dark')
+      var myChart = this.$echarts.init(document.getElementById('barCharts'), 'dark')
       var option = {
         xAxis: {
           type: 'category',
@@ -76,7 +103,52 @@ export default {
       }
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option)
+    },
+    drawDoughnut  () {
+      var myChart = this.$echarts.init(document.getElementById('doughnutCharts'), 'dark')
+      var option = {
+        title: {
+          text: 'Referer of a Website',
+          subtext: 'Fake Data',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'item'
+        },
+        legend: {
+          orient: 'vertical',
+          left: 'left'
+        },
+        series: [
+          {
+            name: 'Access From',
+            type: 'pie',
+            radius: '50%',
+            data: [
+              { value: 1048, name: 'Search Engine' },
+              { value: 735, name: 'Direct' },
+              { value: 580, name: 'Email' },
+              { value: 484, name: 'Union Ads' },
+              { value: 300, name: 'Video Ads' }
+            ],
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            }
+          }
+        ]
+      }
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option)
     }
+  },
+  mounted () {
+    this.drawLine()
+    this.drawBar()
+    this.drawDoughnut()
   }
 }
 </script>
@@ -127,12 +199,17 @@ export default {
   clear: both
 }
 
-.box-card {
-  width: 100%;
-}
 /*一定要设置echarts容易大小，不然不出来，这玩意和canvas一样*/
-.bar {
-  width : 500px;
-  height : 300px;
+.lineCharts {
+  width : 200px;
+  height : 100px;
+}
+.barCharts {
+  width : 200px;
+  height : 100px;
+}
+.doughnutCharts {
+  width : 200px;
+  height : 100px;
 }
 </style>
