@@ -3,19 +3,19 @@
 
 # 一：vue项目架构 #
 
-## 1：vue项目搭建流程 ##
+## 1.1：vue项目搭建流程 ##
 https://blog.csdn.net/weixin_40760196/article/details/79952652
-## 2：vue-cli2和vue-cli3区别 ##
+## 1.2：vue-cli2和vue-cli3区别 ##
 - https://segmentfault.com/a/1190000021582356?utm_source=tag-newest
-## 3：vue-cli3中webpack配置 ##
+## 1.3：vue-cli3中webpack配置 ##
 https://blog.csdn.net/u014440483/article/details/87267160
-## 4：vue-cli3运行cli2项目 ##
+## 1.4：vue-cli3运行cli2项目 ##
 https://www.cnblogs.com/pythoncd/articles/12210091.html
 
 
 # 二：前端工程化包括 #
 
-## 1：技术选型 ##
+## 2.1：技术选型 ##
 - vue2.x+vue-cli2.x+vue-router+vuex+sass+element-ui+axios+echarts+mock
 - vue中使用sass----https://blog.csdn.net/zhouzuoluo/article/details/81010331
 - node与node-sass版本兼容问题----https://www.jianshu.com/p/e28d300a36ed
@@ -23,22 +23,22 @@ https://www.cnblogs.com/pythoncd/articles/12210091.html
 - https://www.cnblogs.com/tzm-001/p/10382534.html
 - https://www.cnblogs.com/guozongzhang/p/10722691.html
 
-## 2：开发规范 ##
+## 2.2：开发规范 ##
 - 目录结构,
 - 文件命名规范----components文件夹内用驼峰命名，pages/views文件夹内小写和短横线命名，dom模板中使用组件用短横线和大写。
 - 编码规范：eslint(js代码校验)，stylelint（css校验）,prettier（主要用于格式化html部分的代码）,
 husky（可以配置git的一些钩子，本文主要用来配置 commit 钩子）,editorconfig (统一编辑器基本配置),
 tsconfig(typescript规范)
 
-## 3：开发流程的规范 ##
+## 2.3：开发流程的规范 ##
 - 使用敏捷，增强开发进度管理和控制
 - 应对各项风险，需求变更等
 - code review 机制
 - UAT（用户验收测试） 提升发布的需求的质量
 
-## 4：前后端接口规范，其他文档规范 ##
+## 2.4：前后端接口规范，其他文档规范 ##
 
-## 5：打包规范 ##
+## 2.5：打包规范 ##
 - webpack打包优化，拆包，分包，加速 ，CDN
 - 关闭生产环境sourceMap;
 - 关闭预加载(vue会预加载后面的页面，会导致首屏加载比较慢)
@@ -50,15 +50,15 @@ tsconfig(typescript规范)
 - 打包缓存
 - 部分依赖使用异步cdn加载
 
-## 6：单元测试 ##
+## 2.6：单元测试 ##
 - https://juejin.cn/post/6844904051449036808
 - https://juejin.cn/post/6844904196244766728
 - 使用jest进行单元测试，提高代码的可测试性，引入单元测试，提高代码质量
 
-## 7：通过使用各种自动化的工程工具，提升整个开发、部署效率 ##
+## 2.7：通过使用各种自动化的工程工具，提升整个开发、部署效率 ##
 - 比如gulp
 
-## 8：性能优化 ##
+## 2.8：性能优化 ##
 - css到js，线上，测试工具，性能监控工具，性能的指标。
 
 
@@ -95,12 +95,12 @@ tsconfig(typescript规范)
 
 # 四：项目开发流程 #
 
-## 1：安装包和目录配置 ##
+## 4.1：安装包和目录配置 ##
 - 安装各种需要的包：sass+element-ui+axiox+echarts+mock等等
 - 配置项目的基本目录：router,mock,store,pages，layout等等
 
 
-## 2：文件目录说明  ##
+## 4.2：文件目录说明  ##
 - build----用于存放 webpack 相关配置和脚本。
 开发中仅偶尔使用 到此文件夹下 webpack.base.conf.js 
 用于配置 less、sass等css预编译库，或者配置一下 UI 库。
@@ -148,7 +148,7 @@ npm run build 命令打包生成静态资源的名称和路径等。
 - package-lock----
 - README.md----项目说明文件
 
-## 3：脚手架的配置 ##
+## 4.3：脚手架的配置 ##
 - 浏览器自动打开
     - 在package.json文件中
 "scripts": {
@@ -175,7 +175,7 @@ module.exports = {
     },
 }
 
-## 4：其他常规配置 ##
+## 4.4：其他常规配置 ##
 - 配置路由----src/router/index.js
 - vuex的配置---src/store
 - axios的二次封装----src/utils/request.js
@@ -220,6 +220,7 @@ module.exports = {
 - Echarts展示数据----https://juejin.cn/post/6844903830660857869
 - 自定义echarts主题----https://blog.csdn.net/weixin_48299611/article/details/121865692 
   - 直接使用把数据写死----src/pages/home/components/CardCharts/CartCharts.vue
+  - vue中调用百度地图----https://dafrok.github.io/vue-baidu-map/#/zh/start/installation
   - 实现echarts等比缩放
   - 调用后端接口返回的数据填充表格
   - 封装Echarts，实现复用

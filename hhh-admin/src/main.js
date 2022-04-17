@@ -15,11 +15,18 @@ import * as echarts from 'echarts'
 // 引入echart主题（背景颜色）
 import 'echarts/theme/dark'
 import 'echarts/theme/infographic'
+// 引入百度地图
+import BaiduMap from 'vue-baidu-map'
 // 把echarts挂载到Vue的原型上，项目中使用this.$echarts调用
 Vue.prototype.$echarts = echarts
 Vue.prototype.$api = api //  将统一管理的接口挂载到原型上，可以在页面中通过this.$api调用
 
 Vue.use(ElementUI)
+// 注册百度地图
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'sORfLM13H4p3AOYpBNUtDhWTBy7YlrEr'
+})
 
 Vue.config.productionTip = false
 
