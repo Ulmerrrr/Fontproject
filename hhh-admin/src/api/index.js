@@ -12,3 +12,10 @@ export const reqGetInfo = function () {
     methods: 'get'
   })
 }
+// 获取饼图数据接口
+export const reqGetPie = function () {
+  return requests({
+    url: '/pie',
+    methods: 'get'
+  })
+}

@@ -219,12 +219,16 @@ module.exports = {
 ## 5.5:开发首页home.vue模块 ##
 - Echarts展示数据----https://juejin.cn/post/6844903830660857869
 - 自定义echarts主题----https://blog.csdn.net/weixin_48299611/article/details/121865692 
-  - 直接使用把数据写死----src/pages/home/components/CardCharts/CartCharts.vue
-  - vue中调用百度地图----https://dafrok.github.io/vue-baidu-map/#/zh/start/installation
-  - 实现echarts等比缩放
-  - 调用后端接口返回的数据填充表格
-  - 封装Echarts，实现复用
-  - 封装雷达图
+      - 直接使用把数据写死----src/pages/home/components/CardCharts/CartCharts.vue
+      - 调用后端接口返回的数据填充表格----src/pages/home/components/CardCharts/PieCharts.vue
+      - 封装Echarts，实现复用
+      - 封装雷达图
+      - 实现echarts等比缩放
+- vue中调用百度地图----src/pages/home/components/BaiMap/BaiMap.vue
+      - https://dafrok.github.io/vue-baidu-map/#/zh/start/installation
+      - 自定义地图主题
+          - https://blog.csdn.net/weixin_41192489/article/details/113033552 
+          - https://lbs.baidu.com/customv2/editor/fd1dd2415bdf537eb2e3614e0457053b 
 ## 5.6 ##
 
 

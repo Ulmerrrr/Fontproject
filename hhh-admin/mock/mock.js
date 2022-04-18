@@ -6,6 +6,8 @@ import Mock from 'mockjs'
 // webpack默认对外暴露的：图片、JSON数据格式
 // 引入轮播的数据
 import userinfo from './userinfo.json'
+// 引入饼图的数据
+import piecharts from './piecharts.json'
 
 // 引入random模块，用于生成随机数
 const Random = Mock.Random
@@ -18,8 +20,14 @@ Mock.mock(
   {'token': Random.integer(), 'code': 200}
 )
 
-// 获取用户信息
+// 获取用户信息接口
 Mock.mock(
   '/mock/userinfo',
   {'code': 200, data: userinfo}
+)
+
+// 首页饼图接口
+Mock.mock(
+  '/mock/pie',
+  {'code': 200, data: piecharts}
 )

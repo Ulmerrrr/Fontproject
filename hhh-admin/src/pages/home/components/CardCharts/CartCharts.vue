@@ -41,9 +41,9 @@
       <div class="grid-content bg-purple">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>卡片四（结合百度地图）</span>
+            <span>卡片四</span>
           </div>
-          <div id="barCharts4" class="barCharts2">
+          <div id="scatterCharts" class="scatterCharts">
           </div>
         </el-card>
       </div>
@@ -63,6 +63,9 @@ export default {
     drawLine () {
       var myChart = this.$echarts.init(document.getElementById('lineCharts'), 'infographic')
       var option = {
+        title: {
+          text: '折线图堆叠'
+        },
         xAxis: {
           type: 'category',
           data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -143,12 +146,52 @@ export default {
       }
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option)
+    },
+    drawscatter () {
+      var myChart = this.$echarts.init(document.getElementById('scatterCharts'), 'dark')
+      var option = {
+        xAxis: {},
+        yAxis: {},
+        series: [
+          {
+            symbolSize: 20,
+            data: [
+              [10.0, 8.04],
+              [8.07, 6.95],
+              [13.0, 7.58],
+              [9.05, 8.81],
+              [11.0, 8.33],
+              [14.0, 7.66],
+              [13.4, 6.81],
+              [10.0, 6.33],
+              [14.0, 8.96],
+              [12.5, 6.82],
+              [9.15, 7.2],
+              [11.5, 7.2],
+              [3.03, 4.23],
+              [12.2, 7.83],
+              [2.02, 4.47],
+              [1.05, 3.33],
+              [4.05, 4.96],
+              [6.03, 7.24],
+              [12.0, 6.26],
+              [12.0, 8.84],
+              [7.08, 5.82],
+              [5.02, 5.68]
+            ],
+            type: 'scatter'
+          }
+        ]
+      }
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option)
     }
   },
   mounted () {
     this.drawLine()
     this.drawBar()
     this.drawDoughnut()
+    this.drawscatter()
   }
 }
 </script>
@@ -209,6 +252,10 @@ export default {
   height : 100px;
 }
 .doughnutCharts {
+  width : 200px;
+  height : 100px;
+}
+.scatterCharts {
   width : 200px;
   height : 100px;
 }
