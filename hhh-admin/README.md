@@ -221,6 +221,7 @@ module.exports = {
 - 自定义echarts主题----https://blog.csdn.net/weixin_48299611/article/details/121865692 
       - 直接使用把数据写死----src/pages/home/components/CardCharts/CartCharts.vue
       - 调用后端接口返回的数据填充表格----src/pages/home/components/CardCharts/PieCharts.vue
+          - https://blog.csdn.net/qq_45018844/article/details/113393943
       - 封装Echarts，实现复用
       - 封装雷达图
       - 实现echarts等比缩放

@@ -13,9 +13,33 @@
 <script>
 export default {
   name: 'PieCharts',
+  data () {
+    return {
+      pieCharts: []
+    }
+  },
   methods: {
+    // 从后端获取饼图的数据
+    getPieChartsData () {
+      this.$api.reqGetPie().then(res => {
+        if (res.code === 200) {
+          // 打印结果
+          console.log(res)
+          // 赋值
+          this.pieCharts = res.data
+        }
+      })
+    },
+    // 初始化饼图
     drawPie () {
       var myChart = this.$echarts.init(document.getElementById('pieCharts'), 'infographic')
+      // 遍历数组中的数据添加到series中
+      const seriesData = this.pieCharts.map(function (item) {
+        return {
+          name: item.name,
+          value: item.value
+        }
+      })
       var option = {
         title: {
           text: 'Referer of a Website',
@@ -34,13 +58,7 @@ export default {
             name: 'Access From',
             type: 'pie',
             radius: '70%',
-            data: [
-              { value: 1048, name: 'Search Engine' },
-              { value: 735, name: 'Direct' },
-              { value: 580, name: 'Email' },
-              { value: 484, name: 'Union Ads' },
-              { value: 300, name: 'Video Ads' }
-            ],
+            data: seriesData,
             emphasis: {
               itemStyle: {
                 shadowBlur: 10,
@@ -56,6 +74,9 @@ export default {
     }
   },
   mounted () {
+    // 获取饼图数据
+    this.getPieChartsData()
+    // 绘制饼图
     this.drawPie()
   }
 }
