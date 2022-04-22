@@ -2,7 +2,7 @@
 <template>
 <div>
   <el-container>
-    <el-header>饼图-从后端获取数据</el-header>
+    <el-header>饼图-从后端获取数据:{{pieCharts}}</el-header>
     <el-main>
       <div id="pieCharts" class="pieCharts"></div>
     </el-main>
@@ -24,21 +24,28 @@ export default {
       this.$api.reqGetPie().then(res => {
         if (res.code === 200) {
           // 打印结果
-          console.log(res)
-          // 赋值
-          this.pieCharts = res.data
+          console.log(res.data)
+          // 遍历数据放到seriesData中
+          for (let i = 0; i < res.data.length; i++) {
+            let seriesData = []
+            seriesData.push({
+              value: res.data[i].value,
+              name: res.data[i].name
+            })
+            this.pieCharts = seriesData
+          }
         }
       })
     },
     // 初始化饼图
     drawPie () {
       var myChart = this.$echarts.init(document.getElementById('pieCharts'), 'infographic')
-      // 遍历数组中的数据添加到series中
-      const seriesData = this.pieCharts.map(function (item) {
-        return {
-          name: item.name,
-          value: item.value
-        }
+      // 监听页面大小变化，重新设置图表大小
+      window.addEventListener('resize', function () {
+        myChart.resize({
+          width: document.getElementById('pieCharts').offsetWidth,
+          height: document.getElementById('pieCharts').offsetHeight
+        })
       })
       var option = {
         title: {
@@ -58,7 +65,8 @@ export default {
             name: 'Access From',
             type: 'pie',
             radius: '70%',
-            data: seriesData,
+            // 把数据填充到饼图中
+            data: this.pieCharts,
             emphasis: {
               itemStyle: {
                 shadowBlur: 10,

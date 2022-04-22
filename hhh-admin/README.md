@@ -220,11 +220,11 @@ module.exports = {
 - Echarts展示数据----https://juejin.cn/post/6844903830660857869
 - 自定义echarts主题----https://blog.csdn.net/weixin_48299611/article/details/121865692 
       - 直接使用把数据写死----src/pages/home/components/CardCharts/CartCharts.vue
-      - 调用后端接口返回的数据填充表格----src/pages/home/components/CardCharts/PieCharts.vue
+      - 调用后端接口返回的数据填充表格----src/pages/home/components/PieCharts/PieCharts.vue（数据填充失败，待解决）
           - https://blog.csdn.net/qq_45018844/article/details/113393943
-      - 封装Echarts，实现复用
-      - 封装雷达图
-      - 实现echarts等比缩放
+      - 实现echarts等比缩放,自适应大屏（调用resize方法）
+      - 封装Echarts，实现复用----https://juejin.cn/post/6995518429952212999
+          - 封装雷达图(使用了props传值)----src/pages/home/components/RadarCharts/RadarCharts.vue
 - vue中调用百度地图----src/pages/home/components/BaiMap/BaiMap.vue
       - https://dafrok.github.io/vue-baidu-map/#/zh/start/installation
       - 自定义地图主题
