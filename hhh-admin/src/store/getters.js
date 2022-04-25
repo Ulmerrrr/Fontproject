@@ -24,6 +24,10 @@ const getters = {
   // 取出用户需要展示的所有路由
   allRoutes (state) {
     return state.allRoutes
+  },
+  // 取出按钮权限
+  userButtons (state) {
+    return state.userButtons
   }
 }
 export default getters

@@ -200,11 +200,13 @@ module.exports = {
 - login.vue----src/pages/login
     - 按需引入element
 - 在actions.js中开发登录，获取用户信息模块
-    - 获取用户信息模块----这里进行菜单权限的处理，常用的方法有两种(菜单，路由完全由后端返回和后端只返回菜单。本项目采用的是后端只返回菜单，然后在前端对异步路由进行过滤)
-    - 存在bug：
-        - 这里我在通过addRoutes添加路由时，遇到一个bug，当切换角色时，并不能删除之前添加动态路由，导致权限低的还能访问没权限的路由：https://www.cnblogs.com/imjtzhang/p/13709166.html
-        - 刷新后addRoutes动态添加的信息消失：https://blog.csdn.net/qq_31906983/article/details/88942965?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.add_param_isCf&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.add_param_isCf
-        - 刷新后vuex保存的用户所要展示的路由消失：https://juejin.cn/post/6844903650427404302     https://www.jianshu.com/p/0c8ba161b249
+    - 获取用户信息模块----处理菜单权限和按钮权限
+        - 菜单权限(不同的用户能观看操作的菜单是不同的)：常用的方法有两种(菜单，路由完全由后端返回和后端只返回菜单。本项目采用的是后端只返回菜单，然后在前端对异步路由进行过滤)
+            - 存在bug：
+                - 这里我在通过addRoutes添加路由时，遇到一个bug，当切换角色时，并不能删除之前添加动态路由，导致权限低的还能访问没权限的路由：https://www.cnblogs.com/imjtzhang/p/13709166.html
+                - 刷新后addRoutes动态添加的信息消失：https://blog.csdn.net/qq_31906983/article/details/88942965?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.add_param_isCf&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-8.add_param_isCf
+                - 刷新后vuex保存的用户所要展示的路由消失：https://juejin.cn/post/6844903650427404302     https://www.jianshu.com/p/0c8ba161b249
+        - 按钮权限(不同的用户有些按钮不可见，有些可见，使用了自定义指令进行鉴权)： 
 - 在src/router/index.js中进行导航守卫的判断
 ## 5.2:创建layouts.vue(首页整体框架) ##
 - layouts.vue----src/layouts
@@ -230,7 +232,10 @@ module.exports = {
       - 自定义地图主题
           - https://blog.csdn.net/weixin_41192489/article/details/113033552 
           - https://lbs.baidu.com/customv2/editor/fd1dd2415bdf537eb2e3614e0457053b 
-## 5.6 ##
+## 5.6:开发权限页面 ##
+- 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----
+- 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
+- 菜单管理(超级管理员可以在这里增加减少菜单栏)
 
 
 

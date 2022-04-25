@@ -18,6 +18,10 @@ const mutations = {
   // 最终用户需要展示的所有路由
   allRoutes (state, allRoutes) {
     state.allRoutes = allRoutes
+  },
+  // 用户的按钮权限
+  userButtons (state, userButtons) {
+    state.userButtons = userButtons
   }
 }
 export default mutations

@@ -6,6 +6,9 @@ import Error404 from '../pages/error/error404'
 import Home from '../pages/home/home'
 import Product1 from '../pages/product/product1'
 import store from '../store'
+import User from '../pages/permisson/user'
+import Role from '../pages/permisson/role'
+import Menu from '../pages/permisson/menu'
 
 Vue.use(Router)
 
@@ -36,6 +39,29 @@ export const constantRoutes = [
 // 异步理由:不同的用户（角色）登陆后可以看见不同的菜单栏，异步路由和后端返回的路由进行匹配
 // 匹配成功后通过router.addRoutes添加到根路由router中
 export const asyncRoutes = [
+  {
+    path: '/permission',
+    name: 'permission',
+    component: Layouts,
+    redirect: '/permission/user',
+    children: [
+      {
+        path: 'user',
+        name: 'user',
+        component: User
+      },
+      {
+        path: 'role',
+        name: 'role',
+        component: Role
+      },
+      {
+        path: 'menu',
+        name: 'menu',
+        component: Menu
+      }
+    ]
+  },
   {
     path: '/product',
     name: 'product',
@@ -95,5 +121,6 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
+// 待解决的需求：如果用户输入url强制进入没有权限的页面，则会跳转到错误页面
 
 export default router

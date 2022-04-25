@@ -14,6 +14,8 @@ const state = {
   // 用户需要展示的异步路由
   matchRoutes: [],
   // 用户需要展示的所有路由
-  allRoutes: []
+  allRoutes: [],
+  // 用户的按钮权限
+  userButtons: []
 }
 export default state

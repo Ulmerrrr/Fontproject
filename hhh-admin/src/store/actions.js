@@ -46,7 +46,7 @@ const actions = {
         return true
       }
     })
-    // 保存用户需要展示的异步路由，一边后面在菜单栏进行循环渲染
+    // 保存用户需要展示的异步路由，以便后面在菜单栏进行循环渲染
     commit('matchRoutes', matchRoutes)
     // 给路由器添加新路由
     router.addRoutes(matchRoutes)
@@ -55,6 +55,9 @@ const actions = {
     // console.log(allRoutes)
     // 用户需要展示的所有路由存在vuex中
     commit('allRoutes', allRoutes)
+    // 按钮权限，用自定义指令进行鉴权
+    // 将用户的按钮权限信息存储到vuex中
+    commit('userButtons', result.data.buttons)
   }
 }
 
