@@ -1,6 +1,7 @@
 <!--侧边栏-->
 <template>
  <div class="side-bar">
+   <!--router是否使用vue-router的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转-->
    <el-menu
      default-active="2"
      class="el-menu-vertical-demo"
@@ -8,19 +9,21 @@
      @close="handleClose"
      background-color="#545c64"
      text-color="#fff"
-     active-text-color="#ffd04b">
-     <router-link to="/home">
-       <el-menu-item index="1">
+     active-text-color="#ffd04b"
+     router>
+     <!--router是否使用vue-router的模式，启用该模式会在激活导航时以index作为path进行路由跳转-->
+       <el-menu-item index="/home">
          <i class="el-icon-menu"></i>
          <span slot="title">首页</span>
        </el-menu-item>
-     </router-link>
-     <el-submenu index="1" v-for="item in matchRoutes" :key="item.id">
+     <el-submenu index="1-1" v-for="item in matchRoutes" :key="item.id">
        <template slot="title">
          <i class="el-icon-location"></i>
          <span>{{item.name}}</span>
        </template>
-       <router-link :to="item.redirect"><el-menu-item index="1-3" v-for="item1 in item.children" :key="item1.id">{{item1.name}}</el-menu-item></router-link>
+       <!--router是否使用vue-router的模式，启用该模式会在激活导航时以index作为path进行路由跳转-->
+<!--       字符串拼接，变量不用加引号，这里还可以用模板字符串的方式，比如：`${item.id}/${item1.name}`，注意这里是反引号，不是单引号-->
+       <el-menu-item :index="item.path + '/' + item1.path" v-for="item1 in item.children" :key="item1.id">{{item1.name}}</el-menu-item>
      </el-submenu>
    </el-menu>
  </div>
