@@ -1,7 +1,12 @@
-<!--头部导航栏-->
+<!--头部面包屑导航栏-->
 <template>
 <div class="navbar">
-  导航
+  <el-breadcrumb separator-class="el-icon-arrow-right">
+    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+    <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+    <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+  </el-breadcrumb>
 </div>
 </template>
 
@@ -26,8 +31,5 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  background-color: orangered;
-  width: 100%;
-  height: 50px;
 }
 </style>

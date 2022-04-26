@@ -1,6 +1,5 @@
 <template>
 <div class="tabs-view">
-  侧边打开的栏标签展示
 </div>
 </template>
 
@@ -11,9 +10,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tabs-view {
+/*.tabs-view {
   width: 100%;
-  height: 30px;
+  height: 50%;
   background-color: white;
-}
+}*/
 </style>

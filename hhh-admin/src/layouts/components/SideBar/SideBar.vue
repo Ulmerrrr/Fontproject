@@ -1,6 +1,5 @@
 <!--侧边栏-->
 <template>
- <div class="side-bar">
    <!--router是否使用vue-router的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转-->
    <el-menu
      default-active="2"
@@ -12,10 +11,10 @@
      active-text-color="#ffd04b"
      router>
      <!--router是否使用vue-router的模式，启用该模式会在激活导航时以index作为path进行路由跳转-->
-       <el-menu-item index="/home">
-         <i class="el-icon-menu"></i>
-         <span slot="title">首页</span>
-       </el-menu-item>
+     <el-menu-item index="/home">
+       <i class="el-icon-menu"></i>
+       <span slot="title">首页</span>
+     </el-menu-item>
      <el-submenu index="1-1" v-for="item in matchRoutes" :key="item.id">
        <template slot="title">
          <i class="el-icon-location"></i>
@@ -26,7 +25,6 @@
        <el-menu-item :index="item.path + '/' + item1.path" v-for="item1 in item.children" :key="item1.id">{{item1.name}}</el-menu-item>
      </el-submenu>
    </el-menu>
- </div>
 </template>
 
 <script>
@@ -51,16 +49,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.side-bar {
-/*  background-color: orchid;*/
-  width: 200px;
-  height: 100%;
-  .home {
-    margin: 2px auto;
-  }
-}
-/*.router-link-active {
-  text-decoration: none;
-  list-style: none;
-}*/
 </style>

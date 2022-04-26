@@ -1,15 +1,19 @@
 <!--页面整体布局-->
 <template>
-  <div class="app-wrapper">
-    <div class="left">
-      <side-bar></side-bar>
-    </div>
-    <div class="right">
-      <nav-bar></nav-bar>
-      <tabs-view></tabs-view>
-      <app-main></app-main>
-    </div>
-  </div>
+    <el-container>
+      <el-aside width="200px">
+        <side-bar></side-bar>
+      </el-aside>
+      <el-container>
+        <el-header class="header">
+          <nav-bar></nav-bar>
+          <tabs-view></tabs-view>
+        </el-header>
+        <el-main>
+          <app-main></app-main>
+        </el-main>
+      </el-container>
+    </el-container>
 </template>
 
 <script>
@@ -38,22 +42,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-wrapper {
-  width: 100%;
-  height: 100%;
-  /*background-color: orange;*/
-  position: absolute; /*设置绝对定位，脱离文档流，使背景铺满整个界面*/
+.el-header, .el-footer {
+  background-color: white;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
+
+.el-aside {
+  background-color: white;
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
+
+.el-main {
+  background-color: white;
+  color: #333;
+  text-align: center;
+  line-height: 160px;
+}
+
+body > .el-container {
+  margin-bottom: 40px;
+}
+
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+  line-height: 260px;
+}
+
+.el-container:nth-child(7) .el-aside {
+  line-height: 320px;
+}
+.header {
   display: flex;
+  justify-content: left;
+  align-items: center;
   flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-.left {
-  width: 200px;
-  height: 100%;
-}
-
-.right {
-  flex: 1;
 }
 </style>
