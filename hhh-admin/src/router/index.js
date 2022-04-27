@@ -26,8 +26,10 @@ export const constantRoutes = [
     children: [
       {
         path: 'home',
-        name: 'home',
-        component: Home
+        name: '首页',
+        component: Home,
+        // 可以在页面中通过this.$route.meta.来获取meta信息
+        meta: {title: '首页', path: '/home'}
       }
     ]
   },
@@ -41,37 +43,41 @@ export const constantRoutes = [
 export const asyncRoutes = [
   {
     path: '/permission',
-    name: 'permission',
+    name: '权限管理',
     component: Layouts,
     redirect: '/permission/user',
     children: [
       {
         path: 'user',
-        name: 'user',
-        component: User
+        name: '用户管理',
+        component: User,
+        meta: {title: '用户管理', path: '/permission/user'}
       },
       {
         path: 'role',
-        name: 'role',
-        component: Role
+        name: '角色管理',
+        component: Role,
+        meta: {title: '角色管理', path: '/permission/role'}
       },
       {
         path: 'menu',
-        name: 'menu',
-        component: Menu
+        name: '菜单管理',
+        component: Menu,
+        meta: {title: '菜单管理', path: '/permission/menu'}
       }
     ]
   },
   {
     path: '/product',
-    name: 'product',
+    name: '商品管理',
     component: Layouts,
     redirect: '/product/product1',
     children: [
       {
         path: 'product1',
-        name: 'product1',
-        component: Product1
+        name: '商品管理',
+        component: Product1,
+        meta: {title: '商品管理', path: '/product/product1'}
       }
     ]
   }

@@ -24,7 +24,7 @@ export default {
       this.$api.reqGetPie().then(res => {
         if (res.code === 200) {
           // 打印结果
-          console.log(res.data)
+          // console.log(res.data)
           // 遍历数据放到seriesData中
           for (let i = 0; i < res.data.length; i++) {
             let seriesData = []

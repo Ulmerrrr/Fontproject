@@ -3,5 +3,5 @@
   "avatar": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F36%2Faf%2F84%2F36af84b51d35d4e560fb92fa065fe1d6.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647136713&t=98392d4af5b7f761d2c4ac4b248bdb8b",
   "roles": "admin",
   "buttons": ["btn1", "btn2", "btn3"],
-  "routes": ["permission","product"]
+  "routes": ["权限管理","商品管理"]
 }

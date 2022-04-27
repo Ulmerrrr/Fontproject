@@ -6,16 +6,19 @@
      class="el-menu-vertical-demo"
      @open="handleOpen"
      @close="handleClose"
-     background-color="#545c64"
+     background-color="#191970"
      text-color="#fff"
      active-text-color="#ffd04b"
+     unique-opened
      router>
      <!--router是否使用vue-router的模式，启用该模式会在激活导航时以index作为path进行路由跳转-->
      <el-menu-item index="/home">
        <i class="el-icon-menu"></i>
        <span slot="title">首页</span>
      </el-menu-item>
-     <el-submenu index="1-1" v-for="item in matchRoutes" :key="item.id">
+<!--     这里的index和key的作用类似，可以作为当前被选中元素的唯一表示-->
+<!--     可以通过index和key来设置当前被选中的菜单项，不至于点击某一个菜单项后，其他菜单项的active状态也被激活-->
+     <el-submenu :index="item.name" v-for="item in matchRoutes" :key="item.name">
        <template slot="title">
          <i class="el-icon-location"></i>
          <span>{{item.name}}</span>
@@ -32,10 +35,10 @@ export default {
   name: 'SideBar',
   methods: {
     handleOpen (key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     },
     handleClose (key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     }
   },
   computed: {
@@ -49,4 +52,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/*菜单文本左对齐*/
+.el-menu-vertical-demo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  overflow: hidden;
+}
+/*overflow: hidden去除滚动条*/
 </style>
