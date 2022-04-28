@@ -8,7 +8,7 @@ import Product1 from '../pages/product/product1'
 import store from '../store'
 import User from '../pages/permisson/user'
 import Role from '../pages/permisson/role'
-import Menu from '../pages/permisson/menu'
+import Menulist from '../pages/permisson/menulist'
 
 Vue.use(Router)
 
@@ -20,7 +20,7 @@ export const constantRoutes = [
   },
   {
     path: '/',
-    name: 'layouts',
+    name: '首页',
     component: Layouts,
     redirect: '/home',
     children: [
@@ -62,7 +62,7 @@ export const asyncRoutes = [
       {
         path: 'menu',
         name: '菜单管理',
-        component: Menu,
+        component: Menulist,
         meta: {title: '菜单管理', path: '/permission/menu'}
       }
     ]

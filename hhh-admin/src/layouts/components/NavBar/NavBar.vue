@@ -1,8 +1,9 @@
 <!--头部面包屑导航栏-->
 <template>
-  <el-breadcrumb class="navbar" separator-class="el-icon-arrow-right">
+  <el-breadcrumb class="navbar" separator="/">
     <el-breadcrumb-item
-      :to="{ path: '/' }">{{breadList.title}}</el-breadcrumb-item>
+      v-for="(item, index) in breadList" :key="item.index"
+      >{{item.name}}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
@@ -12,15 +13,15 @@ export default {
   data () {
     return {
       // 当前页面的路由
-      breadList: {}
+      breadList: []
     }
   },
   watch: {
     // 监听路由变化，如果变化了就执行函数，更新面包屑导航
     $route: function () {
-      // 打印当前路由的信息
-      console.log(this.$route.meta)
-      this.breadList = this.$route.meta
+      // 打印当前路由的信息,matched是一个数组，包含了当前页面所有匹配的路由,父子路由各占数组一个位置
+      console.log(this.$route.matched)
+      this.breadList = this.$route.matched
     }
   },
   methods: {
