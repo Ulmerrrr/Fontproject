@@ -1,10 +1,10 @@
 <!--页面整体布局-->
 <template>
     <el-container>
-      <el-aside width="200px">
+      <el-aside :width="asidewidth">
         <side-bar></side-bar>
       </el-aside>
-      <el-container>
+      <el-container :width="containwidth">
         <el-header class="header">
           <nav-bar></nav-bar>
           <tabs-view></tabs-view>
@@ -33,7 +33,12 @@ export default {
   created () {
   },
   data () {
-    return {}
+    return {
+      // 菜单栏宽度
+      asidewidth: '50px',
+      // 内容区宽度
+      containwidth: 'calc(100% - 50)'
+    }
   },
   methods: {},
   mounted () {

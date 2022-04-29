@@ -9,9 +9,11 @@
      background-color="#191970"
      text-color="#fff"
      active-text-color="#ffd04b"
+     :collapse="this.$store.getters.asideCollapse"
      unique-opened
      router>
      <!--router是否使用vue-router的模式，启用该模式会在激活导航时以index作为path进行路由跳转-->
+<!--     collapse：控制菜单栏的展开和折叠-->
      <el-menu-item index="/home">
        <i class="el-icon-menu"></i>
        <span slot="title">首页</span>

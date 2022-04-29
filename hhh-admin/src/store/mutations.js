@@ -22,6 +22,10 @@ const mutations = {
   // 用户的按钮权限
   userButtons (state, userButtons) {
     state.userButtons = userButtons
+  },
+  // 改变侧边栏的展开和收起
+  asideCollapse (state) {
+    state.asideCollapse = !state.asideCollapse
   }
 }
 export default mutations

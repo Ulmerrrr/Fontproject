@@ -16,6 +16,10 @@ const state = {
   // 用户需要展示的所有路由
   allRoutes: [],
   // 用户的按钮权限
-  userButtons: []
+  userButtons: [],
+  // 侧边栏菜单展开状态
+  asideCollapse: true,
+  // 侧边菜单栏隐藏时宽度
+  asidewidth: '50px'
 }
 export default state

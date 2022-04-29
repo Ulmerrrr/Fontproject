@@ -28,6 +28,14 @@ const getters = {
   // 取出按钮权限
   userButtons (state) {
     return state.userButtons
+  },
+  // 取出侧边栏菜单展开状态
+  asideCollapse (state) {
+    return state.asideCollapse
+  },
+  // 取出菜单栏隐藏时的宽度
+  asideWidth (state) {
+    return state.asideWidth
   }
 }
 export default getters

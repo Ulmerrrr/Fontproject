@@ -2,8 +2,8 @@
 <template>
   <div class="navbar">
 <!--    汉堡按钮-->
-    <div class="ham">
-      <span class="el-icon-s-fold"></span>
+    <div class="ham" @click="toggleClick">
+      <span :class="icon"></span>
     </div>
 <!--    面包屑-->
     <el-breadcrumb class="breadcrumb" separator="/">
@@ -26,6 +26,8 @@ export default {
   name: 'NavBar',
   data () {
     return {
+      // 汉堡按钮
+      icon: 'el-icon-s-fold',
       // 当前页面的路由
       breadList: []
     }
@@ -34,7 +36,7 @@ export default {
     // 监听路由变化，如果变化了就执行函数，更新面包屑导航
     $route: function () {
       // 打印当前路由的信息,matched是一个数组，包含了当前页面所有匹配的路由,父子路由各占数组一个位置
-      console.log(this.$route.matched)
+      // console.log(this.$route.matched)
       this.breadList = this.$route.matched
     }
   },
@@ -42,6 +44,12 @@ export default {
     // 获取用户信息
     getInfo: function () {
       this.$store.dispatch('getInfo')
+    },
+    // 点击汉堡按钮,更改按钮图表和侧边栏状态
+    toggleClick: function () {
+      this.$store.commit('asideCollapse')
+      // 三元表达式判断一下侧边栏状态，根据这个状态更改图表
+      this.$store.getters.asideCollapse ? this.icon = 'el-icon-s-unfold' : this.icon = 'el-icon-s-fold'
     }
   },
   mounted () {
@@ -53,25 +61,35 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between; /*flex项目之间隔开*/
   align-items: center;
   flex-wrap: nowrap;
-  text-align: left;
   .ham {
-    font-size: 40px;
-  }
-  .breadcrumb {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-size: 40px;
+    flex: 0.5;
+  }
+  .breadcrumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;/*从头对齐*/
+    align-items: center;
     flex-wrap: nowrap;
-    text-align: left;
+    font-size: 15px;
+    flex: 9;
   }
   .avatar {
-    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 0.5;
   }
   .last {
     color: gray;
