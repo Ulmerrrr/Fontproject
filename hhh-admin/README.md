@@ -232,14 +232,17 @@ module.exports = {
       - 自定义地图主题
           - https://blog.csdn.net/weixin_41192489/article/details/113033552 
           - https://lbs.baidu.com/customv2/editor/fd1dd2415bdf537eb2e3614e0457053b 
-## 5.6:开发权限管理页面 ##
+# 5.6：导航栏 #
+- src/layouts/components/NavBar/NavBar.vue
+    - 动态面包屑
+        - https://blog.csdn.net/weixin_51497206/article/details/118599173
+    - 汉堡按钮伸缩项（侧边栏展开合并）
+    - 展示头像和点击头像退出 
+
+## 5.7:开发权限管理页面 ##
 - 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
-- 菜单管理(超级管理员可以在这里增加减少菜单栏)
-# 5.7：导航栏动态面包屑 #
-- src/layouts/components/NavBar/NavBar.vue
-    - https://blog.csdn.net/weixin_51497206/article/details/118599173
-
+- 菜单管理(超级管理员可以在这里增加减少菜单栏) 
 
  
 ## 安装

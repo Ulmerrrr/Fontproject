@@ -1,10 +1,24 @@
-<!--头部面包屑导航栏-->
+<!--头部导航栏-->
 <template>
-  <el-breadcrumb class="navbar" separator="/">
-    <el-breadcrumb-item
-      v-for="(item, index) in breadList" :key="item.index"
-      >{{item.name}}</el-breadcrumb-item>
-  </el-breadcrumb>
+  <div class="navbar">
+<!--    汉堡按钮-->
+    <div class="ham">
+      <span class="el-icon-s-fold"></span>
+    </div>
+<!--    面包屑-->
+    <el-breadcrumb class="breadcrumb" separator="/">
+      <el-breadcrumb-item v-for="(item, index) in breadList" :key="item.index">
+        <!--如果是最后一项变成灰色,不是的话是黑色-->
+        <span class="last" v-if="index === breadList.length - 1">{{item.name}}</span>
+        <span class="no-last" v-else>{{item.name}}</span>
+      </el-breadcrumb-item>
+    </el-breadcrumb>
+<!--    头像-->
+    <div class="avatar">
+      <el-avatar :size="40" :src="this.$store.getters.avatar">
+      </el-avatar>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -45,5 +59,28 @@ export default {
   align-items: center;
   flex-wrap: nowrap;
   text-align: left;
+  .ham {
+    font-size: 40px;
+  }
+  .breadcrumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-align: left;
+  }
+  .avatar {
+    margin-top: 10%;
+  }
+  .last {
+    color: gray;
+    cursor: text;
+  }
+  .no-last {
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 </style>
