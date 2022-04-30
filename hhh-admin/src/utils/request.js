@@ -3,6 +3,8 @@ import axios from 'axios'
 import NProgress from 'nprogress' // 引入请求时顶部出现进度条
 import 'nprogress/nprogress.css'
 // import store from '../store'
+// 引入检查token是否过期的方法
+// import { checkToken } from './refresh_token'
 
 // 底下的代码也是创建axios实例
 let requests = axios.create({
@@ -15,6 +17,15 @@ let requests = axios.create({
 
 // 请求拦截器----在项目中发请求（请求没有发出去）可以做一些事情
 requests.interceptors.request.use((config) => {
+  // 判断token是否存在
+  // if (localStorage.getItem('token')) {
+  //   config.headers.Authorization = localStorage.getItem('token')
+  //   // 检查token是否过期,如果过期触发被动退出
+  //   if (checkToken()) {
+  //     store.commit('logout')
+  //     return Promise.reject(new Error('token过期'))
+  //   }
+  // }
   // if (store.getters.token) {
   //   // 设置请求头
   //   config.headers['authorization'] = store.getters.token

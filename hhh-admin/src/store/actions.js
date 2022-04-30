@@ -3,6 +3,7 @@
 import {reqGetLogin, reqGetInfo} from '../api'
 // 引入常量路由和异步路由
 import router, {constantRoutes, asyncRoutes} from '../router'
+import {setTokenTime} from '../utils/refresh_token'
 
 const actions = {
   // 处理登录业务
@@ -15,6 +16,8 @@ const actions = {
     if (result.code === 200) {
       // 将token存到本地
       localStorage.setItem('token', result.token)
+      // 登陆时间存在本地
+      setTokenTime()
       // 提交mutations,把token存到vuex
       commit('token', result.token)
     } else {

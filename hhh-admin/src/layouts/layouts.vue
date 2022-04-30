@@ -1,10 +1,11 @@
 <!--页面整体布局-->
 <template>
     <el-container>
-      <el-aside :width="asidewidth">
+      <el-aside :width="sideBarHideWidth">
         <side-bar></side-bar>
       </el-aside>
-      <el-container :width="containwidth">
+<!--      动态绑定class类,如果this.$store.getters.asideCollapse为true，那么绑定container类-->
+      <el-container :class="{container: !this.$store.getters.asideCollapse}">
         <el-header class="header">
           <nav-bar></nav-bar>
           <tabs-view></tabs-view>
@@ -34,14 +35,17 @@ export default {
   },
   data () {
     return {
-      // 菜单栏宽度
-      asidewidth: '50px',
-      // 内容区宽度
-      containwidth: 'calc(100% - 50)'
+      // 菜单栏隐藏时宽度
+      sideBarHideWidth: '50px'
     }
   },
   methods: {},
   mounted () {
+    if (this.$store.getters.asideCollapse) {
+      this.sideBarHideWidth = ''
+    } else {
+      this.sideBarHideWidth = '50px'
+    }
   }
 }
 </script>
@@ -86,4 +90,9 @@ body > .el-container {
   align-items: center;
   flex-direction: row;
 }
+/*内容区域宽度*/
+.container {
+  width: calc(100% - 50px);
+}
+
 </style>

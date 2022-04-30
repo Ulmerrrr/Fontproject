@@ -27,5 +27,11 @@ const mutations = {
   asideCollapse (state) {
     state.asideCollapse = !state.asideCollapse
   }
+  // token过期被动退出
+  // logout (state) {
+  //   state.token = ''
+  //   localStorage.clear()
+  //   router.replace('/login')
+  // }
 }
 export default mutations

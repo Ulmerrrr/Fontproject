@@ -60,7 +60,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  overflow: hidden;
+  overflow: hidden; /*overflow: hidden去除滚动条*/
 }
-/*overflow: hidden去除滚动条*/
 </style>
