@@ -17,7 +17,7 @@ let requests = axios.create({
 
 // 请求拦截器----在项目中发请求（请求没有发出去）可以做一些事情
 requests.interceptors.request.use((config) => {
-  // 判断token是否存在
+  // 判断token是否存在，token过期强制刷新token
   // if (localStorage.getItem('token')) {
   //   config.headers.Authorization = localStorage.getItem('token')
   //   // 检查token是否过期,如果过期触发被动退出

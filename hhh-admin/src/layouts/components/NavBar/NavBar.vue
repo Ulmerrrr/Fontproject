@@ -15,13 +15,25 @@
     </el-breadcrumb>
 <!--    头像-->
     <div class="avatar">
-      <el-avatar :size="40" :src="this.$store.getters.avatar">
-      </el-avatar>
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <el-avatar :size="40" :src="this.$store.getters.avatar"></el-avatar>
+        </span>
+        <el-dropdown-menu slot="dropdown" @click="logOut">
+          <el-dropdown-item>退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </div>
+<!--    全屏切换-->
+    <div class="fullscreen" @click="toggleFullScreen">
+      <span :class="screenicon"></span>
     </div>
   </div>
 </template>
 
 <script>
+// 引入全屏切换插件
+import screenfull from 'screenfull'
 export default {
   name: 'NavBar',
   data () {
@@ -29,7 +41,9 @@ export default {
       // 汉堡按钮
       icon: 'el-icon-s-fold',
       // 当前页面的路由
-      breadList: []
+      breadList: [],
+      // 全屏切换图标
+      screenicon: 'el-icon-full-screen'
     }
   },
   watch: {
@@ -50,6 +64,17 @@ export default {
       this.$store.commit('asideCollapse')
       // 三元表达式判断一下侧边栏状态，根据这个状态更改图表
       this.$store.getters.asideCollapse ? this.icon = 'el-icon-s-unfold' : this.icon = 'el-icon-s-fold'
+    },
+    // 退出登录
+    logOut: function () {
+      this.$store.commit('logout')
+    },
+    // 全屏切换
+    toggleFullScreen: function () {
+      if (!screenfull.isEnabled) {
+        this.screenicon = 'el-icon-switch-button'
+        screenfull.toggle()
+      }
     }
   },
   mounted () {
@@ -89,7 +114,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex: 0.5;
+    flex: 1;
   }
   .last {
     color: gray;
@@ -100,5 +125,16 @@ export default {
     font-weight: bold;
     cursor: pointer;
   }
+  .fullscreen {
+    font-size: 20px;
+    flex: 1;
+  }
+}
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409EFF;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
 }
 </style>
