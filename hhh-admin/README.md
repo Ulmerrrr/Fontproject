@@ -234,27 +234,24 @@ module.exports = {
           - https://lbs.baidu.com/customv2/editor/fd1dd2415bdf537eb2e3614e0457053b 
 # 5.6：导航栏 #
 - src/layouts/components/NavBar/NavBar.vue
-    - 动态面包屑
+    - 动态面包屑----src/layouts/components/NavBar/components/BreadCrumb.vue
         - https://blog.csdn.net/weixin_51497206/article/details/118599173
-    - 汉堡按钮伸缩项（侧边栏展开合并）
-    - 展示头像,点击头像退出和被动退出（token过期自动退出）
+    - 汉堡按钮伸缩项（侧边栏展开合并）----src/layouts/components/NavBar/components/HamBurger.vue
+    - 展示头像,点击头像退出和被动退出（token过期自动退出）----src/layouts/components/NavBar/components/avatar.vue
         - 展示头像：获取vuex中数据
         - 点击头像退出----src/layouts/components/NavBar/NavBar.vue
         - 被动菜单（token过期自动退出）----hhh-admin/src/utils/refresh_token.js----src/utils/request.js
             - B站vue3.2管理系统
             - https://juejin.cn/post/7076022961316036638
-    - 实现全屏切换
-        - https://juejin.cn/post/6856933528328732686 
-        - 使用screenfull插件
-# 5.7：实现页面中英切换 #
-- 使用i18n----
-    - https://kazupon.github.io/vue-i18n/zh/introduction.html#%E8%B5%9E%E5%8A%A9%E5%95%86
-    - https://juejin.cn/post/7082730122809180174 
- # 5.8:实现全屏 #
-- 使用screenfull插件
-    - https://juejin.cn/post/6856933528328732686
-    - 要使用5.1.0版本的，使用最新的会报错----npm install --save-dev screenfull@5.1.0   
-## 5.7:开发权限管理页面 ##
+    - 实现全屏切换----src/layouts/components/NavBar/components/ScreenFull.vue
+        - https://www.npmjs.com/package/screenfull
+        - https://blog.csdn.net/yang1393214887/article/details/105687717
+        - 要使用5.1.0版本的，使用最新的会报错----npm install --save-dev screenfull@5.1.0 
+    - 中英切换 
+        - 使用i18n----
+            - https://kazupon.github.io/vue-i18n/zh/introduction.html#%E8%B5%9E%E5%8A%A9%E5%95%86
+            - https://juejin.cn/post/7082730122809180174
+  ## 5.9:开发权限管理页面 ##
 - 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
