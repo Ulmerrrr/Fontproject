@@ -1,0 +1,8 @@
+{
+  "user": [
+    {"id": 1, "role_name": "总经理", "name": "John", "age": 30},
+    {"id": 2, "role_name": "业务员", "name": "Mary", "age": 25},
+    {"id": 3, "role_name": "业务员", "name": "Mike", "age": 35},
+    {"id": 4, "role_name": "业务员", "name": "Jane", "age": 45}
+  ]
+}

@@ -176,6 +176,7 @@ module.exports = {
 }
 
 ## 4.4：其他常规配置 ##
+- 配置字体图标svg-icon----https://juejin.cn/post/6898533227544182792
 - 配置路由----src/router/index.js
 - vuex的配置---src/store
 - axios的二次封装----src/utils/request.js
@@ -251,6 +252,8 @@ module.exports = {
         - 使用i18n----
             - https://kazupon.github.io/vue-i18n/zh/introduction.html#%E8%B5%9E%E5%8A%A9%E5%95%86
             - https://juejin.cn/post/7082730122809180174
+    - 引导页
+        - https://juejin.cn/post/6844903858687180807 
   ## 5.9:开发权限管理页面 ##
 - 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)

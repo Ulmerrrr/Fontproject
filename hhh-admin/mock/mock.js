@@ -8,6 +8,8 @@ import Mock from 'mockjs'
 import userinfo from './userinfo.json'
 // 引入饼图的数据
 import piecharts from './piecharts.json'
+// 引入用户管理
+import userlist from './userlist.json'
 
 // 引入random模块，用于生成随机数
 const Random = Mock.Random
@@ -30,4 +32,10 @@ Mock.mock(
 Mock.mock(
   '/mock/pie',
   {'code': 200, data: piecharts}
+)
+
+// 权限管理/用户管理接口
+Mock.mock(
+  '/mock/userlist',
+  {'code': 200, data: userlist}
 )
