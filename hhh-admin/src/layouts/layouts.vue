@@ -8,7 +8,6 @@
       <el-container :class="{container: !this.$store.getters.asideCollapse}">
         <el-header class="header">
           <nav-bar></nav-bar>
-          <tabs-view></tabs-view>
         </el-header>
         <el-main>
           <app-main></app-main>
@@ -20,7 +19,6 @@
 <script>
 import SideBar from './components/SideBar/SideBar'
 import NavBar from './components/NavBar/NavBar'
-import TabsView from './components/TabsView/TabsView'
 import AppMain from './components/AppMain/AppMain'
 
 export default {
@@ -28,7 +26,6 @@ export default {
   components: {
     SideBar,
     NavBar,
-    TabsView,
     AppMain
   },
   created () {

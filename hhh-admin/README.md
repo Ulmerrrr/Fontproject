@@ -211,7 +211,7 @@ module.exports = {
 - 在src/router/index.js中进行导航守卫的判断
 ## 5.2:创建layouts.vue(首页整体框架) ##
 - layouts.vue----src/layouts
-    - 创建基本模块：AppMain,NavBar,SideBar,TabsView. 
+    - 创建基本模块：AppMain,NavBar,SideBar. 
 ## 5.3:创建错误页面(error) ##
 - error.vue----src/pages/error
 ## 5.4:路由的配置 ##
@@ -255,7 +255,9 @@ module.exports = {
     - 引导页
         - https://juejin.cn/post/6844903858687180807 
   ## 5.9:开发权限管理页面 ##
-- 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----
+- 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----hhh-admin/src/pages/permisson/user.vue
+    - 解决el-col里面嵌套el-input出现的高度问题(CSS深度选择器)
+        - https://blog.csdn.net/song_yuejia/article/details/116645328
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
 
