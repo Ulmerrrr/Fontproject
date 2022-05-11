@@ -11,8 +11,35 @@
       <el-button type="primary" icon="el-icon-search" @click="getUser()">搜索</el-button>
       <el-button type="primary" >添加用户</el-button>
     </el-row>
-    <el-table :data="tableData" height="250" border style="width: 100%">
-      <el-table-column :prop="item.prop" :label="item.label" width="180" v-for="(item) in options" :key="item.id"></el-table-column>
+    <el-table :data="tableData" height="500" style="width: 100%" class="el-table">
+      <el-table-column
+        :prop="item.prop"
+        :label="item.label"
+        width="180"
+        v-for="(item) in options"
+        :key="item.id"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="creat_time"
+        label="creat_time"
+        width="180"
+      >
+        <template slot-scope="scope">
+          {{this.$dayjs('scope.row.creat_time').format("YYYY-MM-DD") }}
+        </template>
+      </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <el-button
+            size="mini"
+            type="danger"
+            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+        </template>
+      </el-table-column>
     </el-table>
   </el-card>
 </template>
@@ -48,6 +75,12 @@ export default {
       }).catch(err => {
         console.log(err)
       })
+    },
+    handleEdit (index, row) {
+      console.log(index, row)
+    },
+    handleDelete (index, row) {
+      console.log(index, row)
     }
   }
 }
@@ -79,6 +112,17 @@ https://blog.csdn.net/song_yuejia/article/details/116645328*/
     /*height: 50px;
     line-height: 50px;*/
     background-color: gray;
+  }
+}
+/*表格高度问题*/
+.el-table {
+/*  深度选择器，去除默认的padding*/
+  /deep/ th {
+    background-color: dimgray;
+    height: 10px;
+  }
+  /deep/ td {
+    background-color: pink;
   }
 }
 </style>

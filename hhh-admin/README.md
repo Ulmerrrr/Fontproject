@@ -258,6 +258,8 @@ module.exports = {
 - 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----hhh-admin/src/pages/permisson/user.vue
     - 解决el-col里面嵌套el-input出现的高度问题(CSS深度选择器)
         - https://blog.csdn.net/song_yuejia/article/details/116645328
+    - day.js处理表格中的时间----src/utils/filters.js
+        - https://www.jianshu.com/p/ed20fb23e658 
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
 
