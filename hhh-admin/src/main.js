@@ -19,8 +19,13 @@ import 'echarts/theme/infographic'
 import BaiduMap from 'vue-baidu-map'
 // 引入dayjs
 import dayjs from 'dayjs'
+// 引入过滤器
+import * as filters from './utils/filters'
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 // dayjs挂载到vue原型上
-Vue.prototype.$dayjs = dayjs
+Vue.prototype.dayjs = dayjs
 // 把echarts挂载到Vue的原型上，项目中使用this.$echarts调用
 Vue.prototype.$echarts = echarts
 Vue.prototype.$api = api //  将统一管理的接口挂载到原型上，可以在页面中通过this.$api调用

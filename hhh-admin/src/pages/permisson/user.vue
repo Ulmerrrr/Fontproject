@@ -26,7 +26,10 @@
         width="180"
       >
         <template slot-scope="scope">
-          {{this.$dayjs('scope.row.creat_time').format("YYYY-MM-DD") }}
+<!--          使用dayjs结合计算属性格式化时间-->
+          {{dateFormat(scope.row.creat_time)}}
+<!--          或者使用过滤器filter-->
+<!--          {{scope.row.creat_time | dateFormat}}-->
         </template>
       </el-table-column>
       <el-table-column label="操作">
@@ -41,18 +44,33 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="queryForm.pagenum"
+      :page-sizes="[1, 2, 3, 4]"
+      :page-size="queryForm.pagesize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total=queryForm.total>
+    </el-pagination>
   </el-card>
 </template>
 
 <script>
+import {dateFormat} from '../../utils/filters'
 export default {
   name: 'user',
   data () {
     return {
       queryForm: {
+        // 查询参数
         query: '',
+        // 当前页
         pagenum: 1,
-        pagesize: 2
+        // 每页显示的条数
+        pagesize: 2,
+        // 总条数
+        total: 0
       },
       // 自定义一个数组绑定表头
       options: [
@@ -65,6 +83,11 @@ export default {
       tableData: []
     }
   },
+  computed: {
+    dateFormat: function () {
+      return dateFormat
+    }
+  },
   methods: {
     // 搜索用户
     getUser: function () {
@@ -72,15 +95,26 @@ export default {
       this.$api.reqGetUserList(this.queryForm.query).then(res => {
         console.log(res)
         this.tableData = res.data.user
+        this.queryForm.total = res.data.total
       }).catch(err => {
         console.log(err)
       })
     },
     handleEdit (index, row) {
-      console.log(index, row)
+      // console.log(index, row)
     },
     handleDelete (index, row) {
-      console.log(index, row)
+      // console.log(index, row)
+    },
+    // 处理页数改变
+    handleSizeChange (val) {
+      this.queryForm.pagesize = val
+      this.getUser()
+    },
+    // 处理当前页数改变
+    handleCurrentChange (val) {
+      this.queryForm.pagenum = val
+      this.getUser()
     }
   }
 }
@@ -116,6 +150,7 @@ https://blog.csdn.net/song_yuejia/article/details/116645328*/
 }
 /*表格高度问题*/
 .el-table {
+  overflow: hidden;
 /*  深度选择器，去除默认的padding*/
   /deep/ th {
     background-color: dimgray;

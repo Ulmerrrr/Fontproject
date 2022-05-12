@@ -259,7 +259,10 @@ module.exports = {
     - 解决el-col里面嵌套el-input出现的高度问题(CSS深度选择器)
         - https://blog.csdn.net/song_yuejia/article/details/116645328
     - day.js处理表格中的时间----src/utils/filters.js
-        - https://www.jianshu.com/p/ed20fb23e658 
+        - https://www.jianshu.com/p/ed20fb23e658
+            - 有两种方法：计算属性和过滤（filter）
+                - 过滤器filter的使用：https://juejin.cn/post/6917170634225090568
+    - 分页器的开发 
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
 
