@@ -19,11 +19,18 @@ export const reqGetPie = function () {
     methods: 'get'
   })
 }
-// 获取用户列表接口
+// 搜索用户接口
 export const reqGetUserList = function (params) {
   return requests({
     url: '/userlist',
     methods: 'get',
     params
+  })
+}
+// 添加用户接口
+export const reqAddUser = function () {
+  return requests({
+    url: '/adduser',
+    methods: 'post'
   })
 }

@@ -8,8 +8,8 @@
           class="el-input"
         ></el-input>
       </el-col>
-      <el-button type="primary" icon="el-icon-search" @click="getUser()">搜索</el-button>
-      <el-button type="primary" >添加用户</el-button>
+      <el-button type="primary" icon="el-icon-search" @click.prevent="getUser()">搜索</el-button>
+      <el-button type="primary" @click.prevent="addUser()">添加用户</el-button>
     </el-row>
     <el-table :data="tableData" height="500" style="width: 100%" class="el-table">
       <el-table-column
@@ -53,13 +53,22 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total=queryForm.total>
     </el-pagination>
+<!--    对话框-->
+<!--将对话框的显示状态和标题通过props传给子组件dialog-->  <!--  监听子组件的时间，并在父组件改变对话框的状态时-->
+    <DiaLog :dialogVisible="visible" :title="title"  @hidden="hidden"></DiaLog>
   </el-card>
 </template>
 
 <script>
+// 使用dayjs结合计算属性格式化时间
 import {dateFormat} from '../../utils/filters'
+// 引入对话框公共组件
+import DiaLog from '../../components/DiaLog'
 export default {
   name: 'user',
+  components: {
+    DiaLog
+  },
   data () {
     return {
       queryForm: {
@@ -80,7 +89,11 @@ export default {
         {prop: 'id', label: 'id'}
       ],
       // 存放后端返回的数据
-      tableData: []
+      tableData: [],
+      // 控制对话框的显示和隐藏，把值通过props传给子组件dialog
+      visible: false,
+      // 对话框的标题
+      title: ''
     }
   },
   computed: {
@@ -93,7 +106,7 @@ export default {
     getUser: function () {
       // 记得带上查询参数
       this.$api.reqGetUserList(this.queryForm.query).then(res => {
-        console.log(res)
+        // console.log(res)
         this.tableData = res.data.user
         this.queryForm.total = res.data.total
       }).catch(err => {
@@ -106,15 +119,36 @@ export default {
     handleDelete (index, row) {
       // console.log(index, row)
     },
-    // 处理页数改变
+    // pageSize(每页条数) 改变时会触发,回调参数val为新的每页条数
     handleSizeChange (val) {
+      // 初始化pagenum让每页条数改变后的新页面页码重置为1
+      this.queryForm.pagenum = 1
+      // 每页条数赋值
       this.queryForm.pagesize = val
+      // 调用搜索方法
       this.getUser()
     },
-    // 处理当前页数改变
+    // currentPage（当前页的页码数）， 回调参数val是新的页码数
     handleCurrentChange (val) {
+      // 新页码赋值
       this.queryForm.pagenum = val
+      // 调用搜索方法
       this.getUser()
+      console.log(val)
+    },
+    // 添加用户
+    addUser: function () {
+      // 改变父组件的visible值,控制显示，然后通过props传给子组件dialog，
+      // 子组件要用v-bind:dialogVisible绑定父组件的值
+      // 然后在子组件用props接收父组件传过来的值
+      this.visible = true
+      // 给title赋值然后传给子组件
+      this.title = '添加用户'
+    },
+    // 关闭对话框
+    hidden: function () {
+      this.visible = false
+      console.log('船只了')
     }
   }
 }

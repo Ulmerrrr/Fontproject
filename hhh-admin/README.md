@@ -262,7 +262,12 @@ module.exports = {
         - https://www.jianshu.com/p/ed20fb23e658
             - 有两种方法：计算属性和过滤（filter）
                 - 过滤器filter的使用：https://juejin.cn/post/6917170634225090568
-    - 分页器的开发 
+    - 分页器的开发
+        - 直接使用
+        - 封装table和Pagination成公共组件
+    - 添加用户
+        - 封装公共组件DiaLog----src/components/DiaLog.vue
+        - 使用props传值控制对话框的显示，使用$emit传值控制对话框的的隐藏（不能在子组件直接修改props值，会报错）   
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
 

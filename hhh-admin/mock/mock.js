@@ -34,8 +34,13 @@ Mock.mock(
   {'code': 200, data: piecharts}
 )
 
-// 权限管理/用户管理接口
+// 权限管理/用户管理搜索用户接口
 Mock.mock(
   '/mock/userlist',
   {'code': 200, data: userlist}
+)
+// 权限管理/用户管理添加用户接口
+Mock.mock(
+  '/mock/adduser',
+  {'code': 200}
 )
