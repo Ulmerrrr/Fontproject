@@ -55,7 +55,13 @@
     </el-pagination>
 <!--    对话框-->
 <!--将对话框的显示状态和标题通过props传给子组件dialog-->  <!--  监听子组件的时间，并在父组件改变对话框的状态时-->
-    <DiaLog :dialogVisible="visible" :title="title"  @hidden="hidden"></DiaLog>
+    <DiaLog
+      :dialogVisible="visible"
+      :title="title"
+      @dialog-hidden="hidden"
+      v-if="visible">
+<!--      v-if="visible"关闭时清空上一次填写的数据，打开后是新的表单-->
+    </DiaLog>
   </el-card>
 </template>
 
@@ -148,7 +154,7 @@ export default {
     // 关闭对话框
     hidden: function () {
       this.visible = false
-      console.log('船只了')
+      // console.log('船只了')
     }
   }
 }

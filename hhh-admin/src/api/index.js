@@ -27,10 +27,11 @@ export const reqGetUserList = function (params) {
     params
   })
 }
-// 添加用户接口
-export const reqAddUser = function () {
+// 添加用户接口,需要传参数
+export const reqAddUser = function (data) {
   return requests({
     url: '/adduser',
-    methods: 'post'
+    methods: 'post',
+    data
   })
 }

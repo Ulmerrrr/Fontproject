@@ -267,7 +267,8 @@ module.exports = {
         - 封装table和Pagination成公共组件
     - 添加用户
         - 封装公共组件DiaLog----src/components/DiaLog.vue
-        - 使用props传值控制对话框的显示，使用$emit传值控制对话框的的隐藏（不能在子组件直接修改props值，会报错）   
+        - 使用props传值控制对话框的显示，使用$emit传值控制对话框的的隐藏（不能在子组件直接修改props值，会报错） 
+        - dialog添加用户表单验证  
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
 
