@@ -35,3 +35,18 @@ export const reqAddUser = function (data) {
     data
   })
 }
+// 编辑用户，需要传参（直接写在url中，模板字符串）
+export const reqEditUser = function (data) {
+  return requests({
+    url: `/edituser/${data.id}`,
+    methods: 'get',
+    data
+  })
+}
+// 删除用户，需要传参（直接写在url中，模板字符串）
+export const reqDeleteUser = function (id) {
+  return requests({
+    url: `/deleteuser/${id}`,
+    methods: 'get'
+  })
+}

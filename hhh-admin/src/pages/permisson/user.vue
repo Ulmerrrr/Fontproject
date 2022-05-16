@@ -34,13 +34,15 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button
-            size="mini"
-            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-          <el-button
-            size="mini"
-            type="danger"
-            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          <div class="edit">
+            <el-button
+              size="mini"
+              @click="handleEdit(scope.row)">编辑</el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.row)">删除</el-button>
+          </div>
         </template>
       </el-table-column>
     </el-table>
@@ -59,7 +61,8 @@
       :dialogVisible="visible"
       :title="title"
       @dialog-hidden="hidden"
-      v-if="visible">
+      v-if="visible"
+      :form="editForm">
 <!--      v-if="visible"关闭时清空上一次填写的数据，打开后是新的表单-->
     </DiaLog>
   </el-card>
@@ -91,15 +94,24 @@ export default {
       options: [
         {prop: 'name', label: 'name'},
         {prop: 'role_name', label: 'role_name'},
-        {prop: 'age', label: 'age'},
-        {prop: 'id', label: 'id'}
+        {prop: 'password', label: 'password'},
+        {prop: 'id', label: 'id'},
+        {prop: 'email', label: 'email'},
+        {prop: 'mobile', label: 'mobile'}
       ],
       // 存放后端返回的数据
       tableData: [],
       // 控制对话框的显示和隐藏，把值通过props传给子组件dialog
       visible: false,
       // 对话框的标题
-      title: ''
+      title: '',
+      // 编辑用户的数据
+      editForm: {
+        name: '',
+        password: '',
+        email: '',
+        mobile: ''
+      }
     }
   },
   computed: {
@@ -118,12 +130,6 @@ export default {
       }).catch(err => {
         console.log(err)
       })
-    },
-    handleEdit (index, row) {
-      // console.log(index, row)
-    },
-    handleDelete (index, row) {
-      // console.log(index, row)
     },
     // pageSize(每页条数) 改变时会触发,回调参数val为新的每页条数
     handleSizeChange (val) {
@@ -155,14 +161,48 @@ export default {
     hidden: function () {
       this.visible = false
       // console.log('船只了')
+    },
+    // 编辑用户(row是当前行的信息)
+    handleEdit (row) {
+      // 改变父组件的visible值,控制显示，然后通过props传给子组件dialog，
+      this.visible = true
+      // 给title赋值然后传给子组件
+      this.title = '编辑用户'
+      // 赋值
+      this.editForm = row
+      // console.log(row)
+    },
+    // 删除用户（MessageBox 弹框组件）（row可以获取当前行用户的信息）
+    handleDelete (row) {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        // 调用接口删除，row可以获取当前行用户的信息，这里需要一个参数id
+        this.$api.reqDeleteUser(row.id)
+        this.$message({
+          type: 'success',
+          message: '删除成功!'
+        })
+        // 删除后重新获取数据
+        this.getUser()
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
+      console.log(row)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-/*解决el-col里面嵌套el-input出现的高度问题
-https://blog.csdn.net/song_yuejia/article/details/116645328*/
+/*解决el-col里面嵌套el-input出现的高度问题(深度选择器)*/
+/*https://blog.csdn.net/song_yuejia/article/details/116645328*/
+/*https://blog.csdn.net/qq_37600506/article/details/122703393*/
 .el-row {
   display: flex;
   flex-direction: row;
@@ -199,5 +239,15 @@ https://blog.csdn.net/song_yuejia/article/details/116645328*/
   /deep/ td {
     background-color: pink;
   }
+  .edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
+.el-pagination {
+  text-align: right;
 }
 </style>

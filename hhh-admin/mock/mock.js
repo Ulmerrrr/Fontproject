@@ -44,3 +44,13 @@ Mock.mock(
   '/mock/adduser',
   {'code': 200}
 )
+// 权限管理/用户管理编辑用户接口
+Mock.mock(
+  '/mock/edituser',
+  {'code': 200}
+)
+// 权限管理/用户管理删除用户接口
+Mock.mock(
+  '/mock/deluser',
+  {'code': 200}
+)

@@ -258,6 +258,7 @@ module.exports = {
 - 用户管理(超级管理员可以在这里增加减少可登录该系统的用户)----hhh-admin/src/pages/permisson/user.vue
     - 解决el-col里面嵌套el-input出现的高度问题(CSS深度选择器)
         - https://blog.csdn.net/song_yuejia/article/details/116645328
+        - https://blog.csdn.net/qq_37600506/article/details/122703393
     - day.js处理表格中的时间----src/utils/filters.js
         - https://www.jianshu.com/p/ed20fb23e658
             - 有两种方法：计算属性和过滤（filter）
@@ -268,9 +269,16 @@ module.exports = {
     - 添加用户
         - 封装公共组件DiaLog----src/components/DiaLog.vue
         - 使用props传值控制对话框的显示，使用$emit传值控制对话框的的隐藏（不能在子组件直接修改props值，会报错） 
-        - dialog添加用户表单验证  
+        - dialog添加用户表单验证
+    - 编辑用户
+    - 删除用户  
 - 角色管理(超级管理员可以在这里增加减少当前登录用户查看的页面和其他的权限，用到了tree组件)
 - 菜单管理(超级管理员可以在这里增加减少菜单栏) 
+## 5.10：开发商品管理 ##
+- 插槽的使用
+    - 默认插槽
+    - 命名插槽
+    - 作用域插槽（带数据） 
 
  
 ## 安装

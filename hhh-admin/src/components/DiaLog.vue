@@ -11,7 +11,8 @@
       <el-form-item label="用户名" :label-width="formLabelWidth" prop="name">
         <el-input v-model="form.name" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="密码" :label-width="formLabelWidth" prop="password">
+                                                                           <!--      判断只有添加用户的时候才显示密码-->
+      <el-form-item label="密码" :label-width="formLabelWidth" prop="password" v-show="this.title === '添加用户'">
         <el-input v-model="form.password" autocomplete="off" type="password"></el-input>
       </el-form-item>
       <el-form-item label="邮箱" :label-width="formLabelWidth" prop="email">
@@ -34,8 +35,8 @@
 <script>
 export default {
   name: 'DiaLog',
-  // 接收父组件传过来的visible，然后动态控制显示
   props: {
+    // 接收父组件传过来的visible，然后动态控制显示
     dialogVisible: {
       type: Boolean,
       default: false
@@ -44,17 +45,29 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    // 父组件传过来的编辑用户的数据(对象或数组默认值必须从一个工厂函数获取)
+    form: {
+      type: Object,
+      default: () => {
+        return {
+          name: '',
+          password: '',
+          email: '',
+          mobile: ''
+        }
+      }
     }
   },
   data () {
     return {
       // 表单的数据
-      form: {
-        name: '',
-        password: '',
-        email: '',
-        mobile: ''
-      },
+      // form: {
+      //   name: '',
+      //   password: '',
+      //   email: '',
+      //   mobile: ''
+      // },
       formLabelWidth: '120px',
       // 表单的校验规则
       rules: {
@@ -96,8 +109,8 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          // 请求接口，别忘了传入参数
-          this.$api.reqAddUser(this.form)
+          // 请求接口，别忘了传入参数,判断标题是添加用户还是编辑用户
+          this.title === '添加用户' ? this.$api.reqAddUser(this.form) : this.$api.reqEditUser(this.form)
           alert('submit!')
         } else {
           console.log('error submit!!')
