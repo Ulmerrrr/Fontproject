@@ -29,6 +29,8 @@ https://www.cnblogs.com/pythoncd/articles/12210091.html
 - 编码规范：eslint(js代码校验)，stylelint（css校验）,prettier（主要用于格式化html部分的代码）,
 husky（可以配置git的一些钩子，本文主要用来配置 commit 钩子）,editorconfig (统一编辑器基本配置),
 tsconfig(typescript规范)
+  
+ 
 
 ## 2.3：开发流程的规范 ##
 - 使用敏捷，增强开发进度管理和控制
@@ -126,8 +128,9 @@ npm run build 命令打包生成静态资源的名称和路径等。
     - assets----经常放置一些静态资源（样式类文件，如css，less,sass,以及一些js文件，会被webpack打包）
     - common----公共资源存放的地方
     - components----一般放置非路由组件或者项目公用的组件
+    - filters----过滤（一般放置一些公共的方法，比如对时间，金钱的处理）
     - layouts----页面的布局
-    - mixins----混入（也就是一些公用的方法）
+    - mixins----混入（也就是一些公共的组件模板）
     - pages/views----一般放置路由组件和页面组件
     - plugins----放置一些js插件
     - router----配置的路由
@@ -138,11 +141,13 @@ npm run build 命令打包生成静态资源的名称和路径等。
 - static----静态资源（一般放图片资源，不会被webpack打包）
 - test----测试文件目录（unit&e2e）
 - babel----babel编译参数
+- .cz-config.js----git commit提交规范的相关配置
 - .editorconfig----代码格式
 - .eslintignore----js代码校验规范
 - .eslintrc--------js代码校验规范
 - .gitignore----git上传需要忽略的文件配置
 - .postcssrc----转换css的工具
+- commitlint.config.js----husky强制git commit规范配置文件
 - index----设置项目主页的的一些meta头信息和提供用于挂载vue节点。
 - package.json----看到项目描述、项目依赖、项目运行指令
 - package-lock----
@@ -193,7 +198,44 @@ module.exports = {
 - node与node-sass版本兼容问题----https://www.jianshu.com/p/e28d300a36ed
 - 编码规范prettier配置----https://www.cnblogs.com/maxiag/p/13056446.html
 - 编码规范eslint配置----https://blog.csdn.net/weixin_38606332/article/details/80864381
-
+- git commit提交规范----https://juejin.cn/post/6962056746328129567
+    - 1.安装commitizen和cz-customizable
+        - npm install -g commitizen@4.2.4
+        - npm i cz-customizable@6.3.0 --save-dev
+    - 2.在package.json中进行新增
+        - "config": {
+          - "commitizen": {
+            - "path": "node_modules/cz-customizable"
+          - }
+        - } 
+    - 3.在根目录下新建.cz-config.js文件并写入配置 之后就可以用 git cz 来代替 git commit
+    - 4.使用husky进行强制git代码提交规范
+        - npm install --save-dev @commitlint/config-conventional@12.1.4 @commitlint/cli@12.1.4
+        - npm install husky@7.0.1 --save-dev
+        - npx husky install
+    - 5.在package.json中新增指令
+        - "prepare": "husky install" 
+        - 并执行:npm run prepare
+    - 6.新增在husky文件夹新增配置文件comimit.msg 并往里面写入:npx husky add .husky/commit-msg
+- 强制代码格式规范
+    - 1.在Vscode插件中安装prettier
+    - 2.在根目录下导入配置文件
+    - 3.在vscode的设置里 搜索save 就能看到并勾上format on save
+    - 4.右键 使用...格式化文档 配置默认格式化文档程序 选择prettier
+    - 5.在配置下.eslintrc.js里的rules 新增  为了解决eslint与prettier冲突
+'indent': 0,
+'space-before-function-paren': 0
+    - 6.使用husky强制代码格式化  创建配置文件
+     npx husky add .husky/pre-commit
+    - 7.往第六步生成的文件中写入
+    npx lint-staged
+    - 8.把package.json文件的lint-staged修改为
+    - "lint-staged": {
+       - "src/**/*.{js,vue}": [      //src目录下所有的js和vue文件
+         - "eslint --fix",           // 自动修复
+         - "git add"                 // 自动提交时修复
+       - ]
+     - }
 
 
 # 五：项目页面开发 #

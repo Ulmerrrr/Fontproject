@@ -20,7 +20,7 @@ import BaiduMap from 'vue-baidu-map'
 // 引入dayjs
 import dayjs from 'dayjs'
 // 引入过滤器
-import * as filters from './utils/filters'
+import * as filters from './filters/filters'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })

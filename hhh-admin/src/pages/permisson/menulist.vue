@@ -5,8 +5,19 @@
 </template>
 
 <script>
+// 使用混入
+import {mixins1} from '../../mixins'
 export default {
-  name: 'menulist'
+  name: 'menulist',
+  mixins: [mixins1],
+  data () {
+    return {
+    }
+  },
+  created () {
+    // 打印mixins中的数据
+    // console.log(this.msg)
+  }
 }
 </script>
 

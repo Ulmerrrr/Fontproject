@@ -70,7 +70,7 @@
 
 <script>
 // 使用dayjs结合计算属性格式化时间
-import {dateFormat} from '../../utils/filters'
+import {dateFormat} from '../../filters/filters'
 // 引入对话框公共组件
 import DiaLog from '../../components/DiaLog'
 export default {
