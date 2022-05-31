@@ -10,6 +10,8 @@ import userinfo from './userinfo.json'
 import piecharts from './piecharts.json'
 // 引入用户管理
 import userlist from './userlist.json'
+// 引入用户权限
+import rolelist from './rolelist.json'
 
 // 引入random模块，用于生成随机数
 const Random = Mock.Random
@@ -52,5 +54,15 @@ Mock.mock(
 // 权限管理/用户管理删除用户接口
 Mock.mock(
   '/mock/deluser',
+  {'code': 200}
+)
+// 权限管理/角色管理获取角色权限接口
+Mock.mock(
+  '/mock/rolelist',
+  {'code': 200, data: rolelist}
+)
+// 权限管理/角色管理修改用户权限
+Mock.mock(
+  '/mock/editrole',
   {'code': 200}
 )

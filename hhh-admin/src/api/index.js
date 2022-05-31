@@ -50,3 +50,18 @@ export const reqDeleteUser = function (id) {
     methods: 'get'
   })
 }
+// 获取角色拥有的权限值(需要参数id)
+export const reqGetUserPer = function (id) {
+  return requests({
+    url: '/rolelist',
+    methods: 'get',
+    id
+  })
+}
+// 修改用户角色权限值(需要参数id)
+export const reqEditUserPer = function () {
+  return requests({
+    url: '/editrole',
+    methods: 'get'
+  })
+}

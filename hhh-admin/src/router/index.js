@@ -54,7 +54,7 @@ export const asyncRoutes = [
         meta: {title: '用户管理', path: '/permission/user'}
       },
       {
-        path: 'role',
+        path: 'role/:id',
         name: '角色管理',
         component: Role,
         meta: {title: '角色管理', path: '/permission/role'}

@@ -37,6 +37,10 @@
           <div class="edit">
             <el-button
               size="mini"
+              type="info"
+              @click="handlePer(scope.row)">权限</el-button>
+            <el-button
+              size="mini"
               @click="handleEdit(scope.row)">编辑</el-button>
             <el-button
               size="mini"
@@ -162,6 +166,12 @@ export default {
       this.visible = false
       // console.log('船只了')
     },
+    // 跳转到橘色权限页面
+    handlePer (row) {
+      // console.log(row)
+      // 动态路由进行跳转,其中row.id是传的参数
+      this.$router.push({path: `/permission/role/${row.id}`})
+    },
     // 编辑用户(row是当前行的信息)
     handleEdit (row) {
       // 改变父组件的visible值,控制显示，然后通过props传给子组件dialog，
@@ -241,10 +251,14 @@ export default {
   }
   .edit {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
+    background-color: red;
+    el-button {
+      text-align: center;
+    }
   }
 }
 .el-pagination {
